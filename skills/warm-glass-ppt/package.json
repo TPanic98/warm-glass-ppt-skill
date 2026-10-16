@@ -1,0 +1,12 @@
+{
+  "name": "warm-glass-ppt",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An offline, editable PPTX and HTML renderer for warm glass enterprise presentations.",
+  "license": "MIT",
+  "engines": {"node": ">=20"},
+  "dependencies": {"pptxgenjs": "4.0.1", "jszip": "3.10.1"},
+  "optionalDependencies": {"sharp": "^0.34.5"},
+  "scripts": {"demo": "node scripts/build.mjs examples/showcase.json --out dist/showcase"}
+}

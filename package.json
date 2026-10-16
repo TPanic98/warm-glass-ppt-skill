@@ -1,0 +1,17 @@
+{
+  "name": "warm-glass-ppt-skill-repository",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Reference-informed presentation skill with an offline editable PowerPoint generator.",
+  "license": "MIT",
+  "workspaces": ["skills/warm-glass-ppt"],
+  "scripts": {
+    "demo": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/showcase.json --out dist/showcase",
+    "test": "node --test tests/*.test.mjs",
+    "audit:public": "node scripts/audit-public.mjs",
+    "install:skill": "node scripts/install-skill.mjs",
+    "package:skill": "node scripts/package-release.mjs"
+  },
+  "engines": {"node": ">=20"}
+}

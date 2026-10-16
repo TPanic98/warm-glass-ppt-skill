@@ -1,0 +1,6 @@
+interface:
+  display_name: "Warm Glass PPT · 暖白红橙演示"
+  short_description: "生成叙事连贯、暖白红橙玻璃风格的可编辑演讲与培训 PPT，并提取参考素材"
+  default_prompt: "使用 $warm-glass-ppt，根据我的材料制作一套叙事清晰、视觉统一的可编辑 PPT，并提供预览。"
+policy:
+  allow_implicit_invocation: true

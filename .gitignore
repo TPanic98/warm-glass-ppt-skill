@@ -1,0 +1,11 @@
+node_modules/
+dist/
+releases/
+.DS_Store
+.env
+.env.*
+*.log
+private/
+extracted/
+local-assets/
+*.tmp
