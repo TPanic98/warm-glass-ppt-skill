@@ -1,10 +1,10 @@
 ---
 name: warm-glass-ppt
-description: Create Chinese or bilingual enterprise presentations in a warm-white, orange-red glass style. Use for executive talks, training decks, roadmap or architecture slides, and extracting reusable UI assets from reference PPTX files.
+description: Create editable Chinese or bilingual presentations for reports, talks, training and product introductions in a warm-white, orange-red glass style. Also extract reusable UI assets from reference PPTX files.
 license: MIT
 metadata:
-  version: "1.0.0"
-  requires: "Node.js 20+ for the offline generator; image generation is optional. No API key is required."
+  version: "1.1.0"
+  requires: "Node.js 20.9+ for the offline generator; image generation is optional. No API key is required."
 ---
 
 # Warm Glass PPT
@@ -13,7 +13,7 @@ Create a presentation whose narrative and visual system remain consistent across
 
 ## Choose the narrative
 
-Read [narrative.md](references/narrative.md) for an executive talk or training course. Set one job and one main statement for each slide. Keep evidence and future plans distinct; keep a metric on the page that owns its explanation. A section divider marks a transition and does not repeat the following page's argument.
+Read [narrative.md](references/narrative.md) to choose among four uses: report (汇报), talk (演讲), training (培训) or product (产品介绍). These describe the communication goal, not the presenter's seniority or a particular industry. For a mixed assignment, use the dominant purpose and adapt supporting sections. Set one job and one main statement for each slide. Keep evidence and future plans distinct; keep a metric on the page that owns its explanation. A section divider marks a transition and does not repeat the following page's argument.
 
 ## Choose the visual treatment
 
@@ -23,7 +23,7 @@ Read [layouts.md](references/layouts.md) when selecting or changing a page type.
 
 ## Build the deck
 
-For the included offline generator, read [input-format.md](references/input-format.md), then write a JSON brief following `examples/showcase.json`. Run commands from this skill's folder:
+For the included offline generator, read [input-format.md](references/input-format.md), then use the matching example in `examples/report.json`, `talk.json`, `training.json` or `product.json`. `examples/showcase.json` demonstrates all supported layouts. Run commands from this skill's folder:
 
 ```bash
 npm install

@@ -1,0 +1,11 @@
+{
+  "title": "项目阶段汇报 · 结构示例",
+  "mode": "report",
+  "brand": {"name": "PROJECT TEAM", "tagline": "Progress and decisions"},
+  "slides": [
+    {"layout":"cover","title":"项目阶段汇报","subtitle":"结构示例：结论、证据、问题与下一步","image":"@assets/glass-journey.png"},
+    {"layout":"columns","title":"本阶段结论与待确认事项","items":[{"title":"当前判断","details":["填写本阶段总体结论","明确已验证的范围"]},{"title":"支撑证据","details":["列出实际交付物","补充验收记录与来源"]},{"title":"需要决策","details":["说明需要确认的事项","写明决策影响的工作"]}],"takeaway":"本示例只提供结构，项目进展需用真实材料替换。"},
+    {"layout":"comparison","title":"计划与实际的对照","items":[{"title":"约定的计划","details":["填写承诺的里程碑","填写完成标准","填写计划日期"]},{"title":"实际结果与差距","details":["填写已确认的结果","解释影响交付的偏差","标明尚未解决的问题"]}]},
+    {"layout":"roadmap","title":"下一阶段的责任与节点","items":[{"date":"待确认日期","title":"关闭关键问题","details":["填写处理措施","填写负责人"]},{"date":"待确认日期","title":"完成验证","details":["填写验收条件","填写验证责任人"]},{"date":"待确认日期","title":"提交阶段结果","details":["填写交付物","填写需要的支持"]}],"takeaway":"每项行动对应负责人和可检查的完成条件。"}
+  ]
+}

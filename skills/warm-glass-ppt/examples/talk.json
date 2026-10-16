@@ -1,0 +1,11 @@
+{
+  "title": "清晰表达 · 演讲结构示例",
+  "mode": "talk",
+  "brand": {"name": "IDEA STUDIO", "tagline": "One idea, clearly explained"},
+  "slides": [
+    {"layout":"cover","title":"一次演讲，\n讲清一个核心观点","subtitle":"用听众熟悉的问题建立连接，再展开解释和证据。","image":"@assets/glass-journey.png"},
+    {"layout":"columns","title":"听众需要理解的内容","items":[{"title":"为什么相关","details":["从听众的工作出发","说明问题影响什么"]},{"title":"观点如何成立","details":["给出清楚的解释","使用有来源的案例"]},{"title":"意味着什么","details":["说清适用条件","连接到后续行动"]}],"takeaway":"用一个主要观点组织内容，而不是罗列所有材料。"},
+    {"layout":"process","title":"一个案例的解释顺序","items":[{"title":"具体情境","body":"交代对象与问题"},{"title":"采取行动","body":"说明选择与原因"},{"title":"观察结果","body":"展示证据与限制"},{"title":"提炼启示","body":"说明何时值得借鉴"}],"takeaway":"将实际案例填入结构，保留决定结论的条件。"},
+    {"layout":"quote","title":"回到开场的\n那个问题","message":"用一句有依据的判断收束，\n留下与听众相关的下一步。"}
+  ]
+}

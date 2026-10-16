@@ -1,17 +1,22 @@
 {
   "name": "warm-glass-ppt-skill-repository",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "Reference-informed presentation skill with an offline editable PowerPoint generator.",
+  "description": "Editable PPT skill for reports, talks, training and product introductions, with warm glass styling.",
   "license": "MIT",
   "workspaces": ["skills/warm-glass-ppt"],
   "scripts": {
     "demo": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/showcase.json --out dist/showcase",
+    "demo:report": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/report.json --out dist/report",
+    "demo:talk": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/talk.json --out dist/talk",
+    "demo:training": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/training.json --out dist/training",
+    "demo:product": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/product.json --out dist/product",
     "test": "node --test tests/*.test.mjs",
     "audit:public": "node scripts/audit-public.mjs",
     "install:skill": "node scripts/install-skill.mjs",
     "package:skill": "node scripts/package-release.mjs"
   },
-  "engines": {"node": ">=20"}
+  "overrides": {"image-size": "2.0.3"},
+  "engines": {"node": ">=20.9.0"}
 }

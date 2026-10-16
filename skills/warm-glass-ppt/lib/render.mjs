@@ -2,12 +2,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import PptxGenJS from 'pptxgenjs';
 import JSZip from 'jszip';
-import {resolveAsset} from './model.mjs';
+import {resolveAsset,tokens} from './model.mjs';
 import {dimensions} from './pptx-assets.mjs';
 
 export const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 const hex=v=>String(v||'#FFFFFF').replace('#','');
-function gradXml(g){return `<a:gradFill rotWithShape="1"><a:gsLst>${g.stops.map(([p,c])=>`<a:gs pos="${Math.round(p*1000)}"><a:srgbClr val="${hex(c)}"/></a:gs>`).join('')}</a:gsLst><a:lin ang="${Math.round(g.angle*60000)}" scaled="1"/></a:gradFill>`;}
+function gradXml(g){return `<a:gradFill rotWithShape="1"><a:gsLst>${g.stops.map(([p,c,alpha])=>`<a:gs pos="${Math.round(p*1000)}"><a:srgbClr val="${hex(c)}">${alpha===undefined?'':`<a:alpha val="${Math.round(alpha*100000)}"/>`}</a:srgbClr></a:gs>`).join('')}</a:gsLst><a:lin ang="${Math.round(g.angle*60000)}" scaled="1"/></a:gradFill>`;}
 export async function renderPptx(scene,briefDir){
  const pptx=new PptxGenJS();pptx.defineLayout({name:'WARM_GLASS',width:13.333333,height:7.5});pptx.layout='WARM_GLASS';pptx.author=scene.author;pptx.subject='Generated with Warm Glass PPT';pptx.title=scene.title;pptx.company='';pptx.lang='zh-CN';pptx.theme={headFontFace:scene.font,bodyFontFace:scene.font,lang:'zh-CN'};
  const gradients=new Map();
@@ -21,7 +21,8 @@ export async function renderPptx(scene,briefDir){
    else if(e.kind==='arrow')slide.addShape(pptx.ShapeType.rightArrow,{...p,fill:{color:hex(e.fill)},line:{transparency:100}});
    else if(e.kind==='shape'){
     const gradient=typeof e.fill==='object'?e.fill:undefined;if(gradient)gradients.set(e.id,gradient);
-    slide.addShape(e.radius?pptx.ShapeType.roundRect:pptx.ShapeType.rect,{...p,rectRadius:(e.radius||0)/120,fill:{color:hex(gradient?gradient.stops[0][1]:e.fill)},line:e.stroke==='none'?{transparency:100}:{color:hex(e.stroke),width:.7},...(e.shadow?{shadow:{type:'outer',color:'603F29',opacity:.10,blur:8,offset:2,angle:90}}:{})});
+    const material=tokens.material;
+    slide.addShape(e.radius?pptx.ShapeType.roundRect:pptx.ShapeType.rect,{...p,rectRadius:(e.radius||0)/120,fill:{color:hex(gradient?gradient.stops[0][1]:e.fill)},line:e.stroke==='none'?{transparency:100}:{color:hex(e.stroke),width:.6,transparency:e.stroke==='#FFFFFF'?(1-material.borderOpacity)*100:0},...(e.shadow?{shadow:{type:'outer',color:hex(material.shadowColor),opacity:material.shadowOpacity,blur:material.shadowBlur*.6,offset:material.shadowOffset*.6,angle:90}}:{})});
    }
   }
  }
@@ -49,7 +50,8 @@ export async function renderPptx(scene,briefDir){
  return zip.generateAsync({type:'nodebuffer',compression:'DEFLATE'});
 }
 function imageContain(bytes,p){const d=dimensions(bytes);if(!d.width||!d.height)throw Error('Cannot read image dimensions');const scale=Math.min(p.w/d.width,p.h/d.height),w=d.width*scale,h=d.height*scale;return {x:p.x+(p.w-w)/2,y:p.y+(p.h-h)/2,w,h};}
-function fillCss(fill){if(typeof fill==='string')return fill;return `linear-gradient(${fill.angle+90}deg,${fill.stops.map(([p,c])=>`${c} ${p}%`).join(',')})`;}
+function cssColor(color,alpha){if(alpha===undefined)return color;const n=parseInt(hex(color),16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${alpha})`;}
+function fillCss(fill){if(typeof fill==='string')return fill;return `linear-gradient(${fill.angle+90}deg,${fill.stops.map(([p,c,alpha])=>`${cssColor(c,alpha)} ${p}%`).join(',')})`;}
 export async function renderHtml(scene,briefDir){
  const slides=[];for(const [i,s]of scene.slides.entries()){
   const body=[];for(const e of s.elements){const style=`left:${e.x}px;top:${e.y}px;width:${e.w}px;height:${e.h}px;`;
@@ -57,7 +59,7 @@ export async function renderHtml(scene,briefDir){
    else if(e.kind==='image'){const a=await resolveAsset(e.src,briefDir);body.push(`<img class="el" alt="${esc(e.alt)}" style="${style}object-fit:contain" src="data:${a.mime};base64,${a.data.toString('base64')}">`);}
    else if(e.kind==='line')body.push(`<div class="el" style="${style}border-top:${e.width}px solid ${e.color}"></div>`);
    else if(e.kind==='arrow')body.push(`<div class="el arrow" style="${style}background:${e.fill}"></div>`);
-   else body.push(`<div class="el" style="${style}background:${fillCss(e.fill)};border-radius:${e.radius}px;border:${e.stroke==='none'?0:1}px solid ${e.stroke==='none'?'transparent':e.stroke};${e.shadow?'box-shadow:0 8px 20px #603f2918,inset 0 1px 1px #ffffff;':''}"></div>`);
+   else {const m=tokens.material;body.push(`<div class="el" style="${style}background:${fillCss(e.fill)};border-radius:${e.radius}px;border:${e.stroke==='none'?0:1}px solid ${e.stroke==='none'?'transparent':cssColor(e.stroke,e.stroke==='#FFFFFF'?m.borderOpacity:undefined)};${e.shadow?`backdrop-filter:blur(${m.backdropBlur}px);box-shadow:0 ${m.shadowOffset}px ${m.shadowBlur}px ${cssColor(m.shadowColor,m.shadowOpacity)},0 ${m.contactOffset}px ${m.contactBlur}px ${cssColor(m.shadowColor,m.contactOpacity)},inset 0 1px 1px rgba(255,255,255,${m.insetOpacity});`:''}"></div>`);}
   }
   slides.push(`<section class="page" id="slide-${i+1}" aria-label="${esc(s.title)}"><div class="slide" style="background:${s.background}">${body.join('')}</div></section>`);
  }

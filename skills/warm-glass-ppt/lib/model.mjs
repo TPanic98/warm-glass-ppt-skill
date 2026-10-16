@@ -5,13 +5,14 @@ import {fileURLToPath} from 'node:url';
 export const skillRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const tokens=JSON.parse(await fs.readFile(path.join(skillRoot,'assets/tokens.json'),'utf8'));
 export const layouts=['cover','section','columns','comparison','process','roadmap','layers','architecture','metrics','quote','image'];
+export const narrativeModes=['report','talk','training','product'];
 const slideKeys=['layout','title','subtitle','label','message','items','image','imageAlt','takeaway','notes','sources','demonstration'];
 function only(obj,keys,where){if(!obj||typeof obj!=='object'||Array.isArray(obj))throw Error(`${where}: expected an object`);for(const k of Object.keys(obj))if(!keys.includes(k))throw Error(`${where}: unsupported field ${k}`);}
 function string(v,where,required=false){if(v===undefined&&!required)return;if(typeof v!=='string'||(required&&!v.trim()))throw Error(`${where}: expected ${required?'non-empty ':''}text`);if(v.length>12000)throw Error(`${where}: text too long`);}
 export function validateBrief(b){
  only(b,['title','author','mode','font','brand','slides'],'brief');string(b.title,'title',true);string(b.author,'author');string(b.font,'font');
  if(b.font!==undefined&&!/^[\p{L}\p{N} _.-]{1,100}$/u.test(b.font))throw Error('font: use a plain installed font-family name');
- if(b.mode!==undefined&&!['executive','training'].includes(b.mode))throw Error('mode: choose executive or training');
+ if(b.mode!==undefined&&![...narrativeModes,'executive'].includes(b.mode))throw Error('mode: choose report, talk, training or product');
  if(b.brand){only(b.brand,['name','tagline','logo'],'brand');for(const k of Object.keys(b.brand))string(b.brand[k],`brand.${k}`);}
  if(!Array.isArray(b.slides)||b.slides.length<1||b.slides.length>100)throw Error('slides: expected 1–100 slides');
  b.slides.forEach((s,i)=>{
@@ -62,7 +63,6 @@ export function makeScene(brief){
   if(brief.brand?.logo)image(brief.brand.logo,64,31,240,50);
   else text(brief.brand?.name||'WARM GLASS',64,35,800,39,23,c.accentText,true);
   if(brief.brand?.tagline)text(brief.brand.tagline,64,78,1250,28,17,c.muted);
-  text(String(index+1).padStart(2,'0'),1462,35,74,39,21,c.muted,false,'right');
   if(!['cover','section','quote'].includes(s.layout)){
    text(s.label||'',64,112,1450,28,18,c.accentText,true);
    text(s.title,64,151,1472,123,50,c.title,true);
@@ -102,5 +102,5 @@ export function makeScene(brief){
   for(const e of elements){if(![e.x,e.y,e.w,e.h].every(Number.isFinite)||e.w<=0||e.h<0||e.x<0||e.y<0||e.x+e.w>1600.5||e.y+e.h>900.5)throw Error(`Slide ${index+1}: invalid or off-canvas element ${e.id}`);}
   scenes.push({title:s.title,layout:s.layout,background:c.canvas,notes:[s.notes||'',s.demonstration?'All numerical values on this slide are demonstration data.':'',...(s.sources||[]).map(x=>'Source: '+x)].filter(Boolean).join('\n'),elements});
  }
- return {title:brief.title,author:brief.author||'',font,width:1600,height:900,slides:scenes};
+ return {title:brief.title,author:brief.author||'',mode:brief.mode==='executive'?'talk':brief.mode,font,width:1600,height:900,slides:scenes};
 }

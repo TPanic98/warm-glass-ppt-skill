@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import JSZip from 'jszip';
 import {build} from '../skills/warm-glass-ppt/scripts/build.mjs';
-import {validateBrief,makeScene,resolveAsset,wrapText} from '../skills/warm-glass-ppt/lib/model.mjs';
+import {validateBrief,makeScene,resolveAsset,wrapText,narrativeModes,tokens} from '../skills/warm-glass-ppt/lib/model.mjs';
 import {readPptx} from '../skills/warm-glass-ppt/lib/pptx-assets.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -17,10 +17,29 @@ test('reference showcase covers all 11 layouts with native objects and gradients
  const ppt=await JSZip.loadAsync(await fs.readFile(path.join(out,'deck.pptx')));const first=await ppt.file('ppt/slides/slide1.xml').async('string');assert.match(first,/<a:t>/);assert.match(first,/<p:pic>/);
  const types=await ppt.file('[Content_Types].xml').async('string');for(const m of types.matchAll(/<Override\b[^>]*\bPartName="([^"]+)"/g))assert.ok(ppt.file(m[1].replace(/^\//,'')),`missing declared part ${m[1]}`);
  const roadmap=await ppt.file('ppt/slides/slide6.xml').async('string');assert.ok(roadmap.includes('<a:gradFill'),'native gradient missing');assert.ok(roadmap.includes('阶段一'));
+ for(const opacity of [90000,64000,48000])assert.ok(roadmap.includes(`<a:alpha val="${opacity}"/>`),`missing glass stop opacity ${opacity}`);
  const metric=await ppt.file('ppt/slides/slide9.xml').async('string');assert.match(metric,/演示数据/);
  const inspected=await readPptx(path.join(out,'deck.pptx'));assert.equal(inspected.report.slides.filter(s=>s.imageOnly).length,0);assert.ok(inspected.report.slides.every(s=>s.textRuns>0));
  const html=await fs.readFile(path.join(out,'preview.html'),'utf8');assert.match(html,/data:image\/png;base64,/);assert.doesNotMatch(html,/<script[^>]+src=/);
+ assert.ok(html.includes('rgba(255,255,255,0.9) 0%'));assert.ok(html.includes('rgba(246,243,240,0.64) 55%'));assert.ok(html.includes('rgba(255,247,237,0.48) 100%'));
+ const scene=JSON.parse(await fs.readFile(path.join(out,'scene.json'),'utf8'));assert.equal(scene.mode,'report');
+ assert.ok(scene.slides.every(s=>!s.elements.some(e=>e.kind==='text'&&e.x>1400&&e.y<100)),'the source header leaves the upper-right corner clear');
  await assert.rejects(build(example,out),/already exists/);
+});
+test('all four narrative examples build, with the legacy talk alias preserved',async()=>{
+ assert.deepEqual(narrativeModes,['report','talk','training','product']);
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'warm-glass-modes-'));
+ for(const mode of narrativeModes){
+  const input=path.join(root,'skills/warm-glass-ppt/examples',`${mode}.json`);
+  const brief=JSON.parse(await fs.readFile(input,'utf8'));assert.equal(brief.mode,mode);
+  const result=await build(input,path.join(tmp,mode));assert.equal(result.slideCount,brief.slides.length);
+  const scene=JSON.parse(await fs.readFile(path.join(tmp,mode,'scene.json'),'utf8'));assert.equal(scene.mode,mode);
+ }
+ const base={title:'Example',slides:[{layout:'cover',title:'Example'}]};
+ const old={...base,mode:'executive'};assert.equal(makeScene(old).mode,'talk');assert.equal(old.mode,'executive');
+ assert.equal(makeScene(base).mode,undefined);
+ assert.throws(()=>validateBrief({...base,mode:'marketing'}),/mode: choose report, talk, training or product/);
+ assert.equal(Object.keys(tokens.gradients).length,6);assert.deepEqual(tokens.gradients.glass.stops.map(s=>s[2]),[.9,.64,.48]);
 });
 test('typos, missing metric evidence, text overflow and invalid asset protocols fail',async()=>{
  assert.throws(()=>validateBrief({title:'X',slides:[{layout:'proces',title:'X'}]}),/unsupported layout/);

@@ -6,7 +6,7 @@ The entrypoint accepts UTF-8 JSON. `title` and `slides` are required. Each slide
 {
   "title": "从试点走向稳定交付",
   "author": "Your name",
-  "mode": "executive",
+  "mode": "report",
   "font": "Microsoft YaHei",
   "brand": {"name": "YOUR TEAM", "tagline": "Your presentation"},
   "slides": [
@@ -32,7 +32,9 @@ The entrypoint accepts UTF-8 JSON. `title` and `slides` are required. Each slide
 }
 ```
 
-`mode` records narrative intent; it does not invent or rewrite content automatically. Optional slide fields: `subtitle`, `label`, `message`, `image`, `imageAlt`, `takeaway`, `notes`, `sources`, `demonstration`. Notes and sources go to PPTX speaker notes. The HTML preview displays projected slide content only.
+`mode` records narrative intent; it does not invent or rewrite content automatically. Choose `report` (汇报), `talk` (演讲), `training` (培训) or `product` (产品介绍). The skill uses that choice when planning the page script; the renderer lays out the supplied text. Omitting `mode` leaves the purpose unspecified. Existing briefs with the old value `executive` remain accepted and normalize to `talk` in `scene.json`; use the four canonical values for new work.
+
+Optional slide fields: `subtitle`, `label`, `message`, `image`, `imageAlt`, `takeaway`, `notes`, `sources`, `demonstration`. Notes and sources go to PPTX speaker notes. The HTML preview displays projected slide content only.
 
 Item fields depend on the selected layout. An unsupported field fails explicitly rather than silently dropping content:
 
