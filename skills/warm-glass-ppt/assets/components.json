@@ -1,0 +1,277 @@
+{
+  "version": "1.2.0-rc.1",
+  "coordinateSystem": {
+    "width": 1672,
+    "height": 941,
+    "unit": "px at 96 dpi"
+  },
+  "families": [
+    {
+      "id": "C01",
+      "name": "标题与章节引导",
+      "relation": "主题与重点",
+      "parameters": [
+        "title",
+        "accent",
+        "subtitle",
+        "size"
+      ],
+      "capacity": "标题 1–2 行，关键词 2–8 字"
+    },
+    {
+      "id": "C02",
+      "name": "结论强调",
+      "relation": "结论与支撑",
+      "parameters": [
+        "text",
+        "label",
+        "variant"
+      ],
+      "capacity": "主句约 18–32 字，可选短标签"
+    },
+    {
+      "id": "C03",
+      "name": "玻璃信息容器",
+      "relation": "内容分组",
+      "parameters": [
+        "title",
+        "body",
+        "focus",
+        "tag"
+      ],
+      "capacity": "标题 1 行，说明 2–4 行"
+    },
+    {
+      "id": "C04",
+      "name": "图标与定位节点",
+      "relation": "对象与标识",
+      "parameters": [
+        "items",
+        "variant"
+      ],
+      "capacity": "6 种原生线性符号，短标签 2–6 字"
+    },
+    {
+      "id": "C05",
+      "name": "指标摘要",
+      "relation": "数值与口径",
+      "parameters": [
+        "items",
+        "trend",
+        "demonstration",
+        "source"
+      ],
+      "capacity": "2–4 个指标，可选原生数据图表"
+    },
+    {
+      "id": "C06",
+      "name": "双栏比较",
+      "relation": "同口径比较",
+      "parameters": [
+        "columns",
+        "emphasize"
+      ],
+      "capacity": "两组同口径内容，各 2–4 条"
+    },
+    {
+      "id": "C07",
+      "name": "步骤流程",
+      "relation": "先后顺序",
+      "parameters": [
+        "items",
+        "current"
+      ],
+      "capacity": "3–6 个步骤，原生连接线附着节点"
+    },
+    {
+      "id": "C08",
+      "name": "阶段路线图",
+      "relation": "阶段与里程碑",
+      "parameters": [
+        "items",
+        "focus"
+      ],
+      "capacity": "3–5 个阶段，日期与阶段状态分开填写"
+    },
+    {
+      "id": "C09",
+      "name": "嵌套层级",
+      "relation": "包含关系",
+      "parameters": [
+        "items"
+      ],
+      "capacity": "2–4 层，每层 1 个名称和短说明"
+    },
+    {
+      "id": "C10",
+      "name": "分层架构",
+      "relation": "分层与职责",
+      "parameters": [
+        "rows"
+      ],
+      "capacity": "3–4 层，每层 2–4 个模块"
+    },
+    {
+      "id": "C11",
+      "name": "证据与来源标注",
+      "relation": "判断与依据",
+      "parameters": [
+        "claim",
+        "basis",
+        "source",
+        "number"
+      ],
+      "capacity": "事实、口径与来源独立填写"
+    },
+    {
+      "id": "C12",
+      "name": "行动与责任表",
+      "relation": "行动、责任与验收",
+      "parameters": [
+        "headers",
+        "rows",
+        "widths"
+      ],
+      "capacity": "3–5 列、2–4 条行动，原生表格"
+    },
+    {
+      "id": "C13",
+      "name": "内容目录",
+      "relation": "主题与阅读顺序",
+      "parameters": [
+        "items",
+        "current"
+      ],
+      "capacity": "3–6 个主题，编号与说明分开"
+    },
+    {
+      "id": "C14",
+      "name": "时间趋势",
+      "relation": "同口径时间序列",
+      "parameters": [
+        "title",
+        "categories",
+        "series",
+        "unit",
+        "max",
+        "demonstration",
+        "source"
+      ],
+      "capacity": "3–8 个时点、1–2 条序列，原生折线图"
+    },
+    {
+      "id": "C15",
+      "name": "目标与实际",
+      "relation": "计划和实绩比较",
+      "parameters": [
+        "title",
+        "categories",
+        "target",
+        "actual",
+        "unit",
+        "max",
+        "demonstration",
+        "source"
+      ],
+      "capacity": "2–5 个同口径分类，原生簇状柱形图"
+    },
+    {
+      "id": "C16",
+      "name": "二维判断矩阵",
+      "relation": "两个维度的定性分类",
+      "parameters": [
+        "xLabel",
+        "yLabel",
+        "quadrants"
+      ],
+      "capacity": "4 个象限，含义由两个轴共同定义"
+    },
+    {
+      "id": "C17",
+      "name": "反馈闭环",
+      "relation": "回流与迭代",
+      "parameters": [
+        "items",
+        "center"
+      ],
+      "capacity": "4 个阶段，原生连接线附着节点"
+    },
+    {
+      "id": "C18",
+      "name": "跨角色泳道",
+      "relation": "职责与交接",
+      "parameters": [
+        "lanes",
+        "steps"
+      ],
+      "capacity": "2–3 个角色、3–5 个交接节点"
+    },
+    {
+      "id": "C19",
+      "name": "输入与输出",
+      "relation": "任务边界与交付物",
+      "parameters": [
+        "input",
+        "work",
+        "output"
+      ],
+      "capacity": "输入、处理、输出各 1 个主题与短说明"
+    },
+    {
+      "id": "C20",
+      "name": "能力覆盖表",
+      "relation": "能力与范围映射",
+      "parameters": [
+        "headers",
+        "rows",
+        "widths"
+      ],
+      "capacity": "3–5 列、2–5 行，原生表格"
+    },
+    {
+      "id": "C21",
+      "name": "情境案例",
+      "relation": "情境、行动与观察",
+      "parameters": [
+        "context",
+        "action",
+        "observation",
+        "limitation"
+      ],
+      "capacity": "3 个案例要素与 1 项适用边界"
+    },
+    {
+      "id": "C22",
+      "name": "问题与答疑",
+      "relation": "问题与解释",
+      "parameters": [
+        "items"
+      ],
+      "capacity": "2–3 组问题与回答"
+    },
+    {
+      "id": "C23",
+      "name": "章节转场",
+      "relation": "主题切换",
+      "parameters": [
+        "number",
+        "title",
+        "subtitle"
+      ],
+      "capacity": "章节号、主题和一句引导"
+    },
+    {
+      "id": "C24",
+      "name": "封面与收束",
+      "relation": "主题、主张与下一步",
+      "parameters": [
+        "title",
+        "accent",
+        "subtitle",
+        "action",
+        "variant"
+      ],
+      "capacity": "1 个主标题、短说明，可选下一步动作"
+    }
+  ]
+}

@@ -7,6 +7,8 @@
 | Example text and demonstration values | Newly written generic content | MIT; numerical examples are explicitly marked |
 | `glass-journey.png` | AI-generated generic glass-path illustration made for this repository | Included for reuse; not copied from a reference deck |
 | Native layout objects | Generated from the scene model | Editable PowerPoint geometry and text |
+| C01–C24 component library and four six-page purpose examples | Newly authored generic native text, shapes, diagrams, charts and tables following the approved visual direction | MIT; no original deck screenshots or cropped UI |
+| UI gallery previews | Renders of those newly authored native examples | Review images only; never used as PPTX component bodies |
 | PptxGenJS | [Official project](https://github.com/gitbrent/PptxGenJS), dependency | MIT |
 | JSZip | [Official project](https://github.com/Stuk/jszip), dependency | MIT or GPL-3.0-or-later; used under MIT |
 | sharp | [Official project](https://github.com/lovell/sharp), optional crop helper | Apache-2.0; transitive binaries carry their own licenses |

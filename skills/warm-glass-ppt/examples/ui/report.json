@@ -1,0 +1,316 @@
+{
+  "schema": "warm-glass-ui/v2",
+  "title": "汇报用途样例",
+  "mode": "report",
+  "slides": [
+    {
+      "title": "项目阶段评审",
+      "category": "汇报 / 评审议题",
+      "subtitle": "示例主题：协作流程试点的阶段判断。",
+      "footer": "虚构项目示例。所有数字、角色和计划均需替换为实际材料。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n虚构项目示例。所有数字、角色和计划均需替换为实际材料。",
+      "components": [
+        {
+          "code": "C24",
+          "props": {
+            "x": 64,
+            "y": 350,
+            "w": 1544,
+            "h": 482,
+            "title": "本阶段的进展与待决策事项",
+            "accent": "待决策事项",
+            "subtitle": "围绕交付证据、目标差距和下一阶段范围展开讨论。",
+            "action": "本次需要确认：是否补充验证后再扩大试点范围。",
+            "variant": "closing"
+          }
+        }
+      ]
+    },
+    {
+      "title": "试点交付与覆盖进展",
+      "category": "汇报 / 阶段成果",
+      "subtitle": "用结果、统计口径和验证依据支持阶段判断。",
+      "accent": "交付",
+      "footer": "演示数据，非实际业务成果。实际汇报应同步给出统计时段、样本范围与验收记录。",
+      "notes": "Demonstration values only: 12 completed items, 4 teams, 75% milestones. Trend [3,6,9,12] is synthetic and is not source bank data.\nFictional illustrative content, not a claim about actual business or product performance.\n演示数据，非实际业务成果。实际汇报应同步给出统计时段、样本范围与验收记录。",
+      "components": [
+        {
+          "code": "C05",
+          "props": {
+            "x": 48,
+            "y": 350,
+            "w": 930,
+            "h": 486,
+            "demonstration": true,
+            "items": [
+              {
+                "value": "12 项",
+                "title": "已交付事项",
+                "body": "本次试点范围"
+              },
+              {
+                "value": "4 组",
+                "title": "参与团队",
+                "body": "口径：参与验证的团队"
+              },
+              {
+                "value": "75%",
+                "title": "节点完成率",
+                "body": "12 / 16 个计划节点"
+              }
+            ],
+            "trend": {
+              "title": "已交付事项累计数量（演示）",
+              "categories": [
+                "第1期",
+                "第2期",
+                "第3期",
+                "第4期"
+              ],
+              "values": [
+                3,
+                6,
+                9,
+                12
+              ],
+              "max": 15
+            }
+          }
+        },
+        {
+          "code": "C11",
+          "props": {
+            "x": 1030,
+            "y": 350,
+            "w": 594,
+            "h": 326,
+            "claim": "扩围前先核对验收记录",
+            "basis": "判断需要结合统计期间、样本范围与验收记录。完成数量之外，还应检查结果是否满足使用条件。",
+            "source": "虚构演示数据，非本行业务成果"
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 1030,
+            "y": 708,
+            "w": 594,
+            "h": 128,
+            "body": "本次评审：是否进入下一阶段验证？"
+          }
+        }
+      ]
+    },
+    {
+      "title": "新增问题的时间变化",
+      "category": "汇报 / 趋势观察",
+      "subtitle": "按相同口径检查每期新增问题，不把数量变化直接解释为质量提升。",
+      "footer": "演示数据。新增问题与累计交付采用不同口径，不能相加；实际汇报需补充统计范围。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n演示数据。新增问题与累计交付采用不同口径，不能相加；实际汇报需补充统计范围。",
+      "components": [
+        {
+          "code": "C14",
+          "props": {
+            "x": 48,
+            "y": 350,
+            "w": 1010,
+            "h": 484,
+            "title": "当期新增待核对问题",
+            "unit": "条",
+            "categories": [
+              "第1期",
+              "第2期",
+              "第3期",
+              "第4期"
+            ],
+            "series": [
+              {
+                "name": "新增问题",
+                "values": [
+                  3,
+                  5,
+                  4,
+                  2
+                ]
+              }
+            ],
+            "max": 6,
+            "demonstration": true
+          }
+        },
+        {
+          "code": "C11",
+          "props": {
+            "x": 1110,
+            "y": 350,
+            "w": 514,
+            "h": 484,
+            "claim": "数量之外仍需检查原因",
+            "basis": "本例展示当期新增问题，不是累计交付数。样本范围可能变化，不能据此直接判断质量或因果关系。",
+            "source": "虚构演示数据"
+          }
+        }
+      ]
+    },
+    {
+      "title": "目标差距与补充验证",
+      "category": "汇报 / 偏差分析",
+      "subtitle": "对齐阶段目标和实绩，明确仍需处理的环节。",
+      "footer": "演示数据，非真实项目进度。目标与实际采用相同单位和范围。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n演示数据，非真实项目进度。目标与实际采用相同单位和范围。",
+      "components": [
+        {
+          "code": "C15",
+          "props": {
+            "x": 48,
+            "y": 350,
+            "w": 1024,
+            "h": 484,
+            "title": "阶段目标与实际完成",
+            "unit": "项",
+            "categories": [
+              "需求核对",
+              "场景验证",
+              "事项交付"
+            ],
+            "target": [
+              12,
+              10,
+              12
+            ],
+            "actual": [
+              10,
+              7,
+              12
+            ],
+            "max": 15,
+            "demonstration": true
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 1120,
+            "y": 350,
+            "w": 504,
+            "h": 484,
+            "title": "需要说明的差距",
+            "tag": "待核对",
+            "body": "需求核对差 2 项。\n场景验证差 3 项。\n\n差距原因与处理节点，应从实际记录中核实。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "后续场景的验证顺序",
+      "category": "汇报 / 范围选择",
+      "subtitle": "结合预期影响与实施准备度，讨论有限资源如何安排。",
+      "footer": "定性讨论示意，象限不代表精确评分或已经批准的资源优先级。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n定性讨论示意，象限不代表精确评分或已经批准的资源优先级。",
+      "components": [
+        {
+          "code": "C16",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "xLabel": "实施准备度",
+            "yLabel": "预期影响",
+            "quadrants": [
+              {
+                "title": "先补齐关键条件",
+                "body": "明确数据、流程和审核要求。"
+              },
+              {
+                "title": "安排优先验证",
+                "body": "选择已有准备且影响较大的任务。",
+                "focus": true
+              },
+              {
+                "title": "继续观察",
+                "body": "暂不扩大验证范围。"
+              },
+              {
+                "title": "小范围验证",
+                "body": "控制投入，检查实际使用价值。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "下一阶段的任务与责任",
+      "category": "汇报 / 推进计划",
+      "subtitle": "将下一步工作落实到阶段、责任角色与可检查的完成节点。",
+      "accent": "任务与责任",
+      "footer": "计划示例。是否扩大范围取决于验证记录；角色与计划节点需按实际工作确认。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n计划示例。是否扩大范围取决于验证记录；角色与计划节点需按实际工作确认。",
+      "components": [
+        {
+          "code": "C08",
+          "props": {
+            "x": 48,
+            "y": 351,
+            "w": 850,
+            "h": 485,
+            "items": [
+              {
+                "date": "阶段一",
+                "title": "问题复核",
+                "body": "整理问题清单\n确认处理边界"
+              },
+              {
+                "date": "阶段二",
+                "title": "补充验证",
+                "body": "覆盖异常情况\n形成反馈记录"
+              },
+              {
+                "date": "阶段三",
+                "title": "评审范围",
+                "body": "结合验证结果\n确认后续范围"
+              }
+            ]
+          }
+        },
+        {
+          "code": "C12",
+          "props": {
+            "x": 950,
+            "y": 351,
+            "w": 674,
+            "h": 485,
+            "headers": [
+              "行动事项",
+              "责任角色",
+              "计划节点"
+            ],
+            "widths": [
+              308,
+              170,
+              160
+            ],
+            "rows": [
+              [
+                "复核问题清单",
+                "交付负责人",
+                "第1周"
+              ],
+              [
+                "补充场景验证",
+                "业务代表",
+                "第2周"
+              ],
+              [
+                "确认后续范围",
+                "评审小组",
+                "第3周"
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

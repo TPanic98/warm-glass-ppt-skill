@@ -1,0 +1,274 @@
+{
+  "schema": "warm-glass-ui/v2",
+  "title": "培训用途样例",
+  "mode": "training",
+  "slides": [
+    {
+      "title": "任务表达与结果核对",
+      "category": "培训 / 学习目标",
+      "subtitle": "完成本节后，能够写出任务说明，并用同伴检查发现一项缺口。",
+      "footer": "教学示例。学习目标通过任务说明和同伴检查结果评估。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n教学示例。学习目标通过任务说明和同伴检查结果评估。",
+      "components": [
+        {
+          "code": "C23",
+          "props": {
+            "x": 64,
+            "y": 361,
+            "w": 650,
+            "h": 450,
+            "number": "01",
+            "title": "协作任务练习",
+            "subtitle": "以低风险文字任务为例，学习如何定义完成。"
+          }
+        },
+        {
+          "code": "C13",
+          "props": {
+            "x": 790,
+            "y": 354,
+            "w": 834,
+            "h": 480,
+            "current": 0,
+            "items": [
+              {
+                "title": "理解范围",
+                "body": "说出本节讨论对象"
+              },
+              {
+                "title": "写清任务",
+                "body": "补充材料与完成标准"
+              },
+              {
+                "title": "交换检查",
+                "body": "指出一项待澄清内容"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI、机器学习与深度学习",
+      "category": "培训 / 概念解释",
+      "subtitle": "先理解概念的范围关系，再明确本次学习聚焦的对象。",
+      "accent": "深度学习",
+      "footer": "简化教学示意。这里讨论以深度学习为基础的大模型，并非完整技术分类图。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n简化教学示意。这里讨论以深度学习为基础的大模型，并非完整技术分类图。",
+      "components": [
+        {
+          "code": "C09",
+          "props": {
+            "x": 48,
+            "y": 351,
+            "w": 990,
+            "h": 485,
+            "items": [
+              {
+                "title": "人工智能 AI",
+                "body": "涉及让系统完成需要智能的任务"
+              },
+              {
+                "title": "机器学习 ML",
+                "body": "通过数据学习规律的方法"
+              },
+              {
+                "title": "深度学习 DL",
+                "body": "以多层神经网络学习表示"
+              },
+              {
+                "title": "大模型（示例）",
+                "body": "本次聚焦：任务表达与结果检查"
+              }
+            ]
+          }
+        },
+        {
+          "code": "C11",
+          "props": {
+            "x": 1084,
+            "y": 351,
+            "w": 540,
+            "h": 334,
+            "claim": "关注概念的范围关系",
+            "basis": "本图只展示一条用于学习的简化路径，不能代表人工智能技术的完整分类。",
+            "source": "教学概念示意"
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 1084,
+            "y": 709,
+            "w": 540,
+            "h": 127,
+            "body": "学习目标：解释范围关系，并说出一个大模型协作任务。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "协作任务的输入与交付物",
+      "category": "培训 / 示例拆解",
+      "subtitle": "先定义材料范围，再说明处理方式与输出标准。",
+      "footer": "教学情境。不得为填补示例而编造事实、来源或实际项目数字。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n教学情境。不得为填补示例而编造事实、来源或实际项目数字。",
+      "components": [
+        {
+          "code": "C19",
+          "props": {
+            "x": 48,
+            "y": 365,
+            "w": 1576,
+            "h": 410,
+            "input": {
+              "title": "项目记录",
+              "body": "经确认的进展与问题\n允许使用的参考文件"
+            },
+            "work": {
+              "title": "组织说明",
+              "body": "按评审议题整理\n保留材料依据"
+            },
+            "output": {
+              "title": "评审提纲",
+              "body": "列出进展与待确认事项\n由同伴逐项核对"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "把模糊要求改写成可验收任务",
+      "category": "培训 / 动手练习",
+      "subtitle": "产出一份包含对象、材料与完成标准的任务说明。",
+      "accent": "可验收",
+      "footer": "练习建议：先独立改写，再两人互换检查，指出一项仍需澄清的内容。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n练习建议：先独立改写，再两人互换检查，指出一项仍需澄清的内容。",
+      "components": [
+        {
+          "code": "C03",
+          "props": {
+            "x": 48,
+            "y": 351,
+            "w": 650,
+            "h": 340,
+            "title": "练习输入",
+            "tag": "练习",
+            "body": "原始要求：\n“帮我整理一份培训材料。”\n补充对象、参考材料与完成标准，\n写成可以执行的任务说明。"
+          }
+        },
+        {
+          "code": "C07",
+          "props": {
+            "x": 746,
+            "y": 371,
+            "w": 878,
+            "h": 340,
+            "current": 0,
+            "items": [
+              {
+                "title": "明确对象",
+                "body": "明确面向谁，\n解决什么问题"
+              },
+              {
+                "title": "补全材料",
+                "body": "提供事实来源，\n说明必要限制"
+              },
+              {
+                "title": "写出标准",
+                "body": "写清判断标准，\n说明什么结果可用"
+              }
+            ]
+          }
+        },
+        {
+          "code": "C02",
+          "props": {
+            "x": 48,
+            "y": 752,
+            "w": 1576,
+            "h": 90,
+            "text": "完成标准：伙伴能根据这份说明，判断任务是否完成。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "同伴检查中的角色与交接",
+      "category": "培训 / 协作练习",
+      "subtitle": "区分任务提出者、工具和检查者各自承担的工作。",
+      "footer": "练习流程示意。检查者提出问题，任务提出者负责核实后修订。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n练习流程示意。检查者提出问题，任务提出者负责核实后修订。",
+      "components": [
+        {
+          "code": "C18",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "lanes": [
+              "任务提出者",
+              "协作工具",
+              "同伴检查者"
+            ],
+            "steps": [
+              {
+                "lane": 0,
+                "title": "说明要求"
+              },
+              {
+                "lane": 1,
+                "title": "组织草稿"
+              },
+              {
+                "lane": 0,
+                "title": "补充材料"
+              },
+              {
+                "lane": 2,
+                "title": "对照标准"
+              },
+              {
+                "lane": 0,
+                "title": "修订确认"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "任务说明的自评问题",
+      "category": "培训 / 检查与反馈",
+      "subtitle": "用问题判断任务说明是否足以让他人继续工作。",
+      "footer": "学习评估建议：提交一份任务说明，以及一次同伴检查的反馈记录。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n学习评估建议：提交一份任务说明，以及一次同伴检查的反馈记录。",
+      "components": [
+        {
+          "code": "C22",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "items": [
+              {
+                "question": "面向谁，解决什么？",
+                "answer": "写明对象与具体问题。不要只写“做得专业一点”等无法判断的要求。"
+              },
+              {
+                "question": "依据哪些材料？",
+                "answer": "列出可使用的记录和参考范围。缺失内容先标为待确认。"
+              },
+              {
+                "question": "怎样判断完成？",
+                "answer": "给出结构、事实核对和交付形式等检查条件，请同伴指出一项缺口。"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

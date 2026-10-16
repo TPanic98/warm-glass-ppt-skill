@@ -1,6 +1,6 @@
 {
   "name": "warm-glass-ppt",
-  "version": "1.1.0",
+  "version": "1.2.0-rc.1",
   "private": true,
   "type": "module",
   "description": "Offline editable PPTX and HTML renderer for reports, talks, training and product introductions.",
@@ -9,5 +9,5 @@
   "dependencies": {"pptxgenjs": "4.0.1", "jszip": "3.10.1"},
   "optionalDependencies": {"sharp": "0.35.5"},
   "overrides": {"image-size": "2.0.3"},
-  "scripts": {"demo": "node scripts/build.mjs examples/showcase.json --out dist/showcase"}
+  "scripts": {"demo": "node scripts/build-ui.mjs examples/ui/components.json --out dist/ui/components"}
 }

@@ -1,0 +1,205 @@
+{
+  "schema": "warm-glass-ui/v2",
+  "title": "演讲用途样例",
+  "mode": "talk",
+  "slides": [
+    {
+      "title": "可检查的 AI 协作",
+      "category": "演讲 / 主题引入",
+      "subtitle": "围绕任务表达、材料依据与人的检查责任展开。",
+      "footer": "方法讨论示例，不构成对特定模型能力或企业效果的承诺。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n方法讨论示例，不构成对特定模型能力或企业效果的承诺。",
+      "components": [
+        {
+          "code": "C24",
+          "props": {
+            "x": 64,
+            "y": 350,
+            "w": 1544,
+            "h": 480,
+            "title": "让生成结果进入可检查的流程",
+            "accent": "可检查",
+            "subtitle": "一次输出之后，如何判断结果可以继续使用？",
+            "action": "今天讨论的范围：任务说明、结果核对和反馈修订。",
+            "variant": "closing"
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI 协作需要可检查的工作流程",
+      "category": "演讲 / 核心观点",
+      "subtitle": "任务目标、参考材料与检查条件，共同影响结果能否投入使用。",
+      "accent": "可检查",
+      "footer": "协作方法示意。具体流程需要结合任务风险、材料条件与人的审核责任。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n协作方法示意。具体流程需要结合任务风险、材料条件与人的审核责任。",
+      "components": [
+        {
+          "code": "C01",
+          "props": {
+            "x": 64,
+            "y": 369,
+            "w": 716,
+            "h": 285,
+            "title": "产出之后，\n还需要检查",
+            "subtitle": "先说明任务如何完成，再判断结果是否达到要求。",
+            "size": 72
+          }
+        },
+        {
+          "code": "C04",
+          "props": {
+            "x": 842,
+            "y": 386,
+            "w": 760,
+            "h": 280,
+            "items": [
+              {
+                "kind": "target",
+                "label": "任务目标"
+              },
+              {
+                "kind": "document",
+                "label": "参考材料"
+              },
+              {
+                "kind": "check",
+                "label": "检查条件"
+              }
+            ],
+            "variant": "pin"
+          }
+        },
+        {
+          "code": "C02",
+          "props": {
+            "x": 48,
+            "y": 758,
+            "w": 1576,
+            "h": 86,
+            "text": "先定义完成标准，再判断生成结果是否可用。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "相同任务，不同输入",
+      "category": "演讲 / 情境展开",
+      "subtitle": "用一个具体情境说明：补充背景与标准，会怎样改变后续协作。",
+      "accent": "不同输入",
+      "footer": "情境示例，不代表对模型效果的量化实验结论。审核与判断仍由使用者负责。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n情境示例，不代表对模型效果的量化实验结论。审核与判断仍由使用者负责。",
+      "components": [
+        {
+          "code": "C06",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "columns": [
+              {
+                "title": "一个模糊要求",
+                "items": [
+                  "“帮我写一份汇报。”",
+                  "缺少受众、参考材料和完成条件",
+                  "结果是否可用，仍需反复澄清"
+                ]
+              },
+              {
+                "title": "一份明确任务",
+                "items": [
+                  "根据项目记录，向评审组说明进展、风险和下一阶段计划。",
+                  "附上验收记录，标明待确认事项。",
+                  "按约定结构交付，再逐项复核。"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "反馈如何进入下一轮任务",
+      "category": "演讲 / 工作机制",
+      "subtitle": "把检查发现的问题转回任务说明，形成有记录的修订。",
+      "footer": "工作机制示意。涉及事实与重要判断时，保留人的核对和批准责任。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n工作机制示意。涉及事实与重要判断时，保留人的核对和批准责任。",
+      "components": [
+        {
+          "code": "C17",
+          "props": {
+            "x": 110,
+            "y": 354,
+            "w": 1452,
+            "h": 460,
+            "center": "检查推动修订",
+            "items": [
+              {
+                "title": "说明任务",
+                "body": "写出材料和完成条件"
+              },
+              {
+                "title": "组织结果",
+                "body": "保留草稿与参考依据"
+              },
+              {
+                "title": "核对结果",
+                "body": "识别遗漏和待确认事项"
+              },
+              {
+                "title": "修订说明",
+                "body": "把反馈带入下一轮"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一份评审材料的协作情境",
+      "category": "演讲 / 案例解释",
+      "subtitle": "通过可追踪的任务说明，展开协作过程。",
+      "footer": "情境示例。案例用来解释过程，不用虚构收益证明方法有效。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n情境示例。案例用来解释过程，不用虚构收益证明方法有效。",
+      "components": [
+        {
+          "code": "C21",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "context": "项目组需要根据记录，解释交付进展和未解决问题。",
+            "action": "先列出可用材料，按评审议题组织草稿，再检查数字和引用是否一致。",
+            "observation": "示例文稿将已确认事实与待确认问题分开，便于评审者继续追问。",
+            "limitation": "虚构案例，未测量效率改善，也不代表真实项目成果。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "下一次协作的具体起点",
+      "category": "演讲 / 收束",
+      "subtitle": "把讨论落实到一个可以尝试的小任务。",
+      "footer": "方法练习建议。任务内容、工具选择和检查强度应与实际风险相匹配。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n方法练习建议。任务内容、工具选择和检查强度应与实际风险相匹配。",
+      "components": [
+        {
+          "code": "C24",
+          "props": {
+            "x": 64,
+            "y": 350,
+            "w": 1544,
+            "h": 480,
+            "title": "先写清一份可验收任务",
+            "accent": "可验收任务",
+            "subtitle": "选择一个低风险任务，写出对象、材料范围和完成标准。",
+            "action": "尝试后记录一项遗漏，再据此修订任务说明。",
+            "variant": "closing"
+          }
+        }
+      ]
+    }
+  ]
+}

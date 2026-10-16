@@ -1,9 +1,9 @@
 ---
 name: warm-glass-ppt
-description: Create editable Chinese or bilingual presentations for reports, talks, training and product introductions in a warm-white, orange-red glass style. Also extract reusable UI assets from reference PPTX files.
+description: Create editable Chinese or bilingual presentations for reports, talks, training and product introductions in a warm-white, orange-red glass style, using reusable native components and offline generation.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.2.0-rc.1"
   requires: "Node.js 20.9+ for the offline generator; image generation is optional. No API key is required."
 ---
 
@@ -19,24 +19,30 @@ Read [narrative.md](references/narrative.md) to choose among four uses: report (
 
 Read [visual-system.md](references/visual-system.md) before designing. Use `assets/tokens.json` as the single source of design values. The warm-white canvas, restrained orange-red emphasis, dark text and translucent layers define the style. Preserve a user-supplied brand asset as an image with its aspect ratio; the public defaults are unbranded.
 
-Read [layouts.md](references/layouts.md) when selecting or changing a page type. The generator includes cover, section, columns, comparison, process, roadmap, layers, architecture, metrics, quote and image layouts. Select the layout that expresses the relationship; do not fill every page with the same card grid.
+Read [ui-components.md](references/ui-components.md) for C01–C24 selection and the native UI brief format. `assets/components.json` indexes parameters and capacities. `assets/component-library.pptx` contains editable examples for direct copying. Choose by the relationship: comparison, sequence, containment, role hand-off, time trend or scope mapping. A sparse statement may need only a headline; do not fill every page with the same card grid.
+
+The approved component canvas is 1672×941. Keep the fixed header and clear upper-right corner. Use fill opacity for glass while leaving text fully opaque. The legacy 11-layout format remains at 1600×900; read [layouts.md](references/layouts.md) only for that format, and do not mix coordinates.
 
 ## Build the deck
 
-For the included offline generator, read [input-format.md](references/input-format.md), then use the matching example in `examples/report.json`, `talk.json`, `training.json` or `product.json`. `examples/showcase.json` demonstrates all supported layouts. Run commands from this skill's folder:
+For portable offline generation, read [ui-components.md](references/ui-components.md), copy the applicable six-page brief from `examples/ui/`, and replace its content and parameters. Run commands from this skill's folder:
 
 ```bash
-npm install
-node scripts/build.mjs path/to/brief.json --out path/to/output
+npm ci
+node scripts/build-ui.mjs examples/ui/report.json --out output/report
 ```
 
-`--out` is a directory. Output includes `deck.pptx`, `preview.html`, `scene.json` and `validation.json`. The builder refuses existing deliverables unless `--force` is supplied. It rejects unsupported fields, overflowing text and off-canvas elements; resolve the wording or layout and rerun.
+The four purpose examples are `report.json`, `talk.json`, `training.json` and `product.json`. `components.json` demonstrates all 24 families. Corresponding PPTX examples are included for direct editing. The generator lays out supplied copy; it does not research, rewrite a narrative or infer real business results.
+
+`--out` is a directory. Output includes `deck.pptx`, a self-contained vector `preview.html`, `scene.json` and `validation.json`. The builder refuses existing deliverables unless `--force` is supplied. It rejects unsupported fields, estimated text overflow and off-canvas elements. Resolve the wording or layout and rerun. Native shape/text groups are named by component instance. Charts, tables and attached connectors remain independent editable objects; recheck connector routing after manual node changes.
+
+For an existing v1 brief, use `scripts/build.mjs` and read [input-format.md](references/input-format.md). Both formats remain supported.
 
 In a host with a required presentation-authoring workflow, use that workflow and carry over this skill's tokens, narrative and layout decisions. The included generator is an independent portable implementation; it does not require a host's private libraries.
 
 ## Use visuals and reference assets
 
-For 3D artwork, local illustrations, image-heavy decks or asset extraction, read [assets.md](references/assets.md). Keep labels, facts, data and required diagrams as native slide objects when editability is requested. A raster illustration can supply material and depth behind editable content.
+For 3D artwork, local illustrations, image-heavy decks or requested source extraction, read [assets.md](references/assets.md). Components are native text, shapes, connectors, tables and data charts. Reference-page previews or cropped images are not component bodies. A separate raster illustration can supply material and depth when appropriate.
 
 Inspect the source before claiming components are extractable:
 
@@ -45,7 +51,7 @@ node scripts/inspect-pptx.mjs path/to/reference.pptx
 node scripts/extract-assets.mjs path/to/reference.pptx --out path/to/asset-library
 ```
 
-If the source contains one full-slide bitmap per page, extraction yields that bitmap, not original icons or vectors. Explicitly requested crops can be made with `--regions regions.json`; the manifest records source, bounds, dimensions and editability. Preserve crop backgrounds and record whether alpha actually exists.
+If the source contains one full-slide bitmap per page, extraction yields that bitmap, not original icons or vectors. Use `--regions regions.json` only for explicitly requested raster crops. Record provenance and dimensions, and label them as image assets rather than editable UI.
 
 ## Finish
 

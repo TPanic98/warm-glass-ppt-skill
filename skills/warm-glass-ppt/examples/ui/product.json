@@ -1,0 +1,271 @@
+{
+  "schema": "warm-glass-ui/v2",
+  "title": "产品介绍用途样例",
+  "mode": "product",
+  "slides": [
+    {
+      "title": "交付文档协作助手",
+      "category": "产品介绍 / 价值与架构",
+      "subtitle": "面向需要共同编写、评审和交付文档的团队。",
+      "accent": "协作助手",
+      "footer": "产品概念示例，非已上线能力承诺。性能、客户案例和价格须以可核实材料为准。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n产品概念示例，非已上线能力承诺。性能、客户案例和价格须以可核实材料为准。",
+      "components": [
+        {
+          "code": "C01",
+          "props": {
+            "x": 48,
+            "y": 363,
+            "w": 550,
+            "h": 255,
+            "title": "把分散材料\n组织成可审阅文档",
+            "subtitle": "连接材料整理、协同编写与人工评审。",
+            "size": 53
+          }
+        },
+        {
+          "code": "C10",
+          "props": {
+            "x": 650,
+            "y": 351,
+            "w": 974,
+            "h": 485,
+            "rows": [
+              {
+                "title": "使用任务",
+                "items": [
+                  "材料整理",
+                  "文档编写",
+                  "协同评审"
+                ]
+              },
+              {
+                "title": "工作能力",
+                "items": [
+                  "内容组织",
+                  "一致性检查"
+                ]
+              },
+              {
+                "title": "使用条件",
+                "items": [
+                  "权限与数据边界",
+                  "人工审核与留痕"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 48,
+            "y": 669,
+            "w": 550,
+            "h": 167,
+            "body": "产品概念示例。实际介绍需区分可用能力、试点范围和尚未支持的功能。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "用户任务与交付边界",
+      "category": "产品介绍 / 任务场景",
+      "subtitle": "说明材料如何进入产品流程，以及用户能拿到什么。",
+      "footer": "产品概念示例。功能可用性、处理范围和数据方式需以真实产品材料为准。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n产品概念示例。功能可用性、处理范围和数据方式需以真实产品材料为准。",
+      "components": [
+        {
+          "code": "C19",
+          "props": {
+            "x": 48,
+            "y": 365,
+            "w": 1576,
+            "h": 410,
+            "input": {
+              "title": "用户提供材料",
+              "body": "有权使用的项目文档\n约定的交付要求"
+            },
+            "work": {
+              "title": "协作编写",
+              "body": "整理内容和生成初稿\n提示遗漏与不一致"
+            },
+            "output": {
+              "title": "可审阅文档",
+              "body": "文稿与待确认清单\n保留来源和版本"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "从材料输入到审核交付",
+      "category": "产品介绍 / 使用与采用",
+      "subtitle": "通过代表性的工作流程，说明产品如何进入用户的实际任务。",
+      "accent": "审核交付",
+      "footer": "产品流程示例。正式使用前，需要核对实际功能范围、数据处理方式与审核责任。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n产品流程示例。正式使用前，需要核对实际功能范围、数据处理方式与审核责任。",
+      "components": [
+        {
+          "code": "C07",
+          "props": {
+            "x": 48,
+            "y": 363,
+            "w": 1576,
+            "h": 295,
+            "items": [
+              {
+                "title": "输入材料",
+                "body": "选择任务资料并确认权限"
+              },
+              {
+                "title": "协同编写",
+                "body": "组织内容并保留原始依据"
+              },
+              {
+                "title": "人工审核",
+                "body": "检查事实、范围与一致性"
+              },
+              {
+                "title": "确认交付",
+                "body": "按约定格式导出与归档"
+              }
+            ]
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 48,
+            "y": 666,
+            "w": 762,
+            "h": 174,
+            "title": "适用任务",
+            "body": "资料归纳、文稿初拟与跨角色协作。"
+          }
+        },
+        {
+          "code": "C03",
+          "props": {
+            "x": 862,
+            "y": 666,
+            "w": 762,
+            "h": 174,
+            "title": "采用前确认",
+            "body": "权限与数据边界、人工审核责任。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "能力范围与使用条件",
+      "category": "产品介绍 / 范围说明",
+      "subtitle": "让使用者同时看到覆盖范围与必要条件。",
+      "footer": "概念能力范围示例，不表示功能已上线。实际介绍应补充每项能力的可用状态。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n概念能力范围示例，不表示功能已上线。实际介绍应补充每项能力的可用状态。",
+      "components": [
+        {
+          "code": "C20",
+          "props": {
+            "x": 48,
+            "y": 354,
+            "w": 1576,
+            "h": 456,
+            "headers": [
+              "任务范围",
+              "概念能力",
+              "采用前确认"
+            ],
+            "widths": [
+              350,
+              620,
+              570
+            ],
+            "rows": [
+              [
+                "内容整理",
+                "摘要与结构化",
+                "材料权限与可用格式"
+              ],
+              [
+                "协同编写",
+                "文稿初拟与补充说明",
+                "模型与工具的实际支持范围"
+              ],
+              [
+                "内容检查",
+                "一致性与遗漏提示",
+                "人工复核责任"
+              ],
+              [
+                "交付留痕",
+                "版本与来源记录",
+                "导出方式及保存要求"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一次文档协作的使用情境",
+      "category": "产品介绍 / 场景展开",
+      "subtitle": "通过一个代表性任务解释使用方式，不虚构客户收益。",
+      "footer": "产品概念示例，不构成客户案例、性能指标或已交付能力证明。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n产品概念示例，不构成客户案例、性能指标或已交付能力证明。",
+      "components": [
+        {
+          "code": "C21",
+          "props": {
+            "x": 48,
+            "y": 344,
+            "w": 1576,
+            "h": 490,
+            "context": "一个项目组需要共同整理设计说明，并交由审核人员审阅。",
+            "action": "输入已确认资料，协作形成草稿，将不一致和缺失内容交给负责人核实。",
+            "observation": "概念流程希望交付一份文稿，以及对应的来源、版本和待确认记录。",
+            "limitation": "虚构产品情境。是否支持相关功能需由实际产品证据确认。"
+          }
+        }
+      ]
+    },
+    {
+      "title": "试用前需要确认的问题",
+      "category": "产品介绍 / 采用条件",
+      "subtitle": "在开始使用之前确认数据、能力和责任。",
+      "footer": "产品采用讨论示例。部署、安全、费用与服务条件应使用可核实的正式说明。",
+      "notes": "Fictional illustrative content, not a claim about actual business or product performance.\n产品采用讨论示例。部署、安全、费用与服务条件应使用可核实的正式说明。",
+      "components": [
+        {
+          "code": "C22",
+          "props": {
+            "x": 48,
+            "y": 350,
+            "w": 1576,
+            "h": 370,
+            "items": [
+              {
+                "question": "哪些资料可以输入？",
+                "answer": "按实际部署和数据政策确认权限、敏感信息处理与保留方式。"
+              },
+              {
+                "question": "交付结果由谁负责？",
+                "answer": "明确人工复核与批准角色，并用真实任务验证实际功能范围。"
+              }
+            ]
+          }
+        },
+        {
+          "code": "C02",
+          "props": {
+            "x": 48,
+            "y": 752,
+            "w": 1576,
+            "h": 90,
+            "text": "下一步：选定一个允许使用的任务，确认范围后再试用。"
+          }
+        }
+      ]
+    }
+  ]
+}
