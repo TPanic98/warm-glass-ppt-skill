@@ -34,7 +34,7 @@ Design the content area, title position and visual hierarchy for each page. A co
 For content-led offline authoring, read [composition.md](references/composition.md) and write a `warm-glass-compose/v1` brief. It supports freely positioned native text, shapes, lines and attached connectors, original image assets, and optional C01–C24 components. Each page records why its composition fits its information relationship. Run from the skill folder:
 
 ```bash
-npm ci
+npm ci --omit=optional
 node scripts/build-ui.mjs my-composition.json --out output/my-deck
 ```
 
@@ -42,7 +42,7 @@ The generic [composition example](examples/compose/content-led.json) demonstrate
 
 For consequential claims and relationships, use the optional source register and page `claims`, `relations` and `reviewQuestions`. A non-observed claim needs a visible status anchor; an observed claim needs a non-example source. Declared arrows, containment bounds and common-axis alignment are checked against the referenced native elements. Source references do not automatically establish truth: compare them with the user's material during content review.
 
-Read [ui-components.md](references/ui-components.md) when a local component actually fits the relationship or when reproducing the older UI brief. `assets/components.json` lists capacities. The six-page files in `examples/ui/` and editable PPTX assets remain compatibility examples, not the default structure for every new assignment. More complex charts or unsupported relationships can use the host's native authoring API with the same visual tokens.
+Read [ui-components.md](references/ui-components.md) when a local component actually fits the relationship or when reproducing the older UI brief. `assets/components.json` lists capacities. The JSON files in `examples/ui/` generate editable compatibility examples on demand; they do not define the structure for every new assignment. More complex charts or unsupported relationships can use the host's native authoring API with the same visual tokens.
 
 `--out` is a directory. Output includes `deck.pptx`, a self-contained vector `preview.html`, `scene.json` and `validation.json`. The builder refuses existing deliverables unless `--force` is supplied. It rejects unsupported fields, estimated text overflow and off-canvas elements. Resolve the wording or layout and rerun. Native shape/text groups are named by component instance. Charts, tables and attached connectors remain independent editable objects; recheck connector routing after manual node changes.
 

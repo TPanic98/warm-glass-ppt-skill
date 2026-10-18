@@ -5,8 +5,8 @@
   "font": "Microsoft YaHei",
   "brand": {"name": "WARM GLASS", "tagline": "Clarity in narrative. Consistency in design."},
   "slides": [
-    {"layout":"cover","label":"可复用的演示生成技能","title":"让思路清楚，\n让内容可改","subtitle":"从材料到叙事，再到可交付的演示文稿","image":"@assets/glass-journey.png","imageAlt":"四个暖色玻璃节点构成的前进路径","takeaway":"内容定义页面职责，视觉帮助听众理解。"},
-    {"layout":"section","label":"01 / NARRATIVE","title":"先形成判断，\n再展开证据","subtitle":"让每一页承担明确的表达任务","image":"@assets/glass-journey.png"},
+    {"layout":"cover","label":"可复用的演示生成技能","title":"让思路清楚，\n让内容可改","subtitle":"从材料到叙事，再到可交付的演示文稿","image":"assets/glass-journey.png","imageAlt":"四个暖色玻璃节点构成的前进路径","takeaway":"内容定义页面职责，视觉帮助听众理解。"},
+    {"layout":"section","label":"01 / NARRATIVE","title":"先形成判断，\n再展开证据","subtitle":"让每一页承担明确的表达任务","image":"assets/glass-journey.png"},
     {"layout":"columns","title":"从三个方面定义演示目标","subtitle":"先明确听众需要做出的决定，再选择内容与版式。","items":[{"title":"讲清问题","details":["当前问题发生在哪里","为什么值得现在处理"]},{"title":"说明方法","details":["工作如何推进","哪些条件决定可行性"]},{"title":"支持行动","details":["已经掌握哪些证据","下一步由谁负责"]}],"takeaway":"一页一个主要判断，让论据服务于判断。"},
     {"layout":"comparison","title":"将零散材料整理成连贯叙事","items":[{"title":"材料的组织方式","details":["按时间堆叠记录","每页都包含相似结论","细节与判断混在一起"]},{"title":"面向听众的表达","details":["按问题组织内容","为每个事实分配主要页面","说明事实如何支持决定"]}],"takeaway":"相邻页面之间的推进关系，需要和单页内容一起检查。"},
     {"layout":"process","title":"从输入到交付的五个步骤","items":[{"title":"读懂材料","body":"识别事实、限制与缺口"},{"title":"组织叙事","body":"明确页面职责与过渡"},{"title":"选择版式","body":"让结构对应信息关系"},{"title":"生成文稿","body":"保留需要修改的元素"},{"title":"检查效果","body":"逐页核对实际渲染"}],"takeaway":"每一步都留下可以继续编辑和复核的结果。"},
@@ -14,7 +14,7 @@
     {"layout":"layers","title":"分清概念范围与当前重点","subtitle":"层级表达包含关系，颜色突出本页需要解释的对象。","items":[{"title":"企业目标","body":"说明希望改善的业务结果"},{"title":"业务流程","body":"找到影响结果的工作环节"},{"title":"能力与工具","body":"选择支撑流程的具体方法"}],"takeaway":"图形层次应当对应真实关系。"},
     {"layout":"architecture","title":"内容、视觉与交付的关系","items":[{"title":"内容层","components":["源材料","页面脚本","证据与引用"]},{"title":"表达层","components":["设计变量","页面布局","图像资产"]},{"title":"交付层","components":["可编辑 PPTX","离线 HTML 预览","质量记录"]}],"takeaway":"共用一份内容模型，支持后续修改与重新生成。"},
     {"layout":"metrics","title":"数字必须连同定义一起出现","subtitle":"本页仅演示指标版式，数值不代表实际业务成果。","demonstration":true,"items":[{"value":"30%","title":"示例改善幅度","body":"说明基线与对比口径"},{"value":"12","title":"示例覆盖数量","body":"说明统计范围与时间"},{"value":"3 周","title":"示例交付周期","body":"说明起点与完成条件"}],"takeaway":"实际使用时，替换数值、定义和来源。"},
-    {"layout":"image","title":"用独立插画表达材质与空间","subtitle":"文字与事实留在原生对象中，玻璃质感由单独的图片承载。","image":"@assets/glass-journey.png","imageAlt":"无品牌暖色玻璃路径示意图","takeaway":"图片是视觉资产，节点名称和业务含义由内容定义。","sources":["AI-generated generic artwork bundled with this repository; see docs/ASSETS.md."]},
-    {"layout":"quote","title":"把注意力\n留给重要内容","message":"结构帮助理解，\n证据支持判断。","image":"@assets/glass-journey.png","takeaway":"交付的是可以继续使用和修改的工作成果。"}
+    {"layout":"image","title":"用独立插画表达材质与空间","subtitle":"文字与事实留在原生对象中，玻璃质感由单独的图片承载。","image":"assets/glass-journey.png","imageAlt":"无品牌暖色玻璃路径示意图","takeaway":"图片是视觉资产，节点名称和业务含义由内容定义。","sources":["AI-generated generic artwork bundled with this repository; see docs/ASSETS.md."]},
+    {"layout":"quote","title":"把注意力\n留给重要内容","message":"结构帮助理解，\n证据支持判断。","image":"assets/glass-journey.png","takeaway":"交付的是可以继续使用和修改的工作成果。"}
   ]
 }

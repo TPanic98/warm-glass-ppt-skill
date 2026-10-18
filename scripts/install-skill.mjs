@@ -3,6 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
+import {isSkillPath} from './skill-files.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=path.join(root,'skills/warm-glass-ppt');const args=process.argv.slice(2);let dest,noDeps=false;
@@ -13,7 +14,7 @@ if(dest===source||dest.startsWith(source+path.sep))throw Error('Choose an instal
 try{await fs.access(dest);throw Error(`Skill already exists: ${dest}. Preserve it or choose another destination.`);}catch(e){if(e.code!=='ENOENT')throw e;}
 await fs.mkdir(path.dirname(dest),{recursive:true});const staging=await fs.mkdtemp(path.join(path.dirname(dest),'.warm-glass-install-'));
 try{
- await fs.cp(source,staging,{recursive:true,filter:p=>!p.split(path.sep).some(v=>['node_modules','dist','.DS_Store'].includes(v))});
- if(!noDeps){const cmd=process.platform==='win32'?'npm.cmd':'npm';const r=spawnSync(cmd,['ci','--ignore-scripts','--no-audit','--no-fund'],{cwd:staging,stdio:'inherit'});if(r.error||r.status!==0)throw Error('Dependency installation failed; no skill was installed.');}
+ await fs.cp(source,staging,{recursive:true,filter:p=>isSkillPath(path.relative(source,p))});
+ if(!noDeps){const cmd=process.platform==='win32'?'npm.cmd':'npm';const r=spawnSync(cmd,['ci','--omit=optional','--ignore-scripts','--no-audit','--no-fund'],{cwd:staging,stdio:'inherit'});if(r.error||r.status!==0)throw Error('Dependency installation failed; no skill was installed.');}
  await fs.rename(staging,dest);console.log(`Installed: ${dest}${noDeps?' (dependencies not installed)':''}`);
 }catch(e){await fs.rm(staging,{recursive:true,force:true});throw e;}

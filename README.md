@@ -4,7 +4,11 @@
 
 它包含可安装的 Agent Skill、叙事与设计规范，以及能离线运行的 PPTX / HTML 生成器。无需 API Key。图像生成能力是可选项。
 
-本地开发版 `1.3.0-alpha.2` 采用**内容驱动的自由构图**，新增可执行的内容关系检查、实际 PPTX 渲染与当前文件审阅记录。先明确听众、目标和逐页判断，再安排原生对象；固定的是颜色、字体与材质，而不是整页骨架。品牌显式输入，默认不带示例 Logo 或 slogan。此开发版尚未发布到 GitHub。[内容策划](skills/warm-glass-ppt/references/content-planning.md) · [自由构图格式](skills/warm-glass-ppt/references/composition.md) · [审阅流程](skills/warm-glass-ppt/references/review.md) · [技能对标](docs/PPT_SKILL_BENCHMARK.md)。
+开发版 `1.3.0-alpha.2` 采用**内容驱动的自由构图**，新增可执行的内容关系检查、实际 PPTX 渲染与当前文件审阅记录。先明确听众、目标和逐页判断，再安排原生对象；固定的是颜色、字体与材质，而不是整页骨架。品牌显式输入，默认不带示例 Logo 或 slogan。[内容策划](skills/warm-glass-ppt/references/content-planning.md) · [自由构图格式](skills/warm-glass-ppt/references/composition.md) · [审阅流程](skills/warm-glass-ppt/references/review.md) · [技能对标](docs/PPT_SKILL_BENCHMARK.md)。
+
+精简技能包只含运行代码、规范、视觉变量和 JSON 样例，不带预生成 PPTX、截图画廊、插画、字体或依赖缓存。按需生成可编辑成品；旧版插画与兼容示例单独留在仓库的 `examples/legacy/`，不进入安装包。
+
+[下载 1.3.0-alpha.2 精简技能包与校验文件](https://github.com/TPanic98/warm-glass-ppt-skill/releases/tag/v1.3.0-alpha.2)。这是开发预发布版，未完成 WorkBuddy 盲测或 WPS 实机交互。
 
 `1.2.0-rc.1` 预发布版包含 **24 个通用组件、四类用途各 6 页样例**。已完成独立安装、离线生成、48 页实际渲染与 LibreOffice 打开另存测试。Microsoft PowerPoint 实机交互尚未验证，字体未嵌入，详见[测试记录](docs/TEST_REPORT.md)。[下载预发布包](https://github.com/TPanic98/warm-glass-ppt-skill/releases/tag/v1.2.0-rc.1)。
 
@@ -23,20 +27,20 @@
 
 ![1.2 四类用途示例](docs/ui-gallery/overview.jpg)
 
-[48 页效果画廊，下载完整仓库后本地打开](docs/ui-gallery/index.html) · [24 页可编辑组件库](skills/warm-glass-ppt/assets/component-library.pptx) · [组件参数清单](skills/warm-glass-ppt/assets/components.json)
+[1.2 旧版成品与画廊归档](https://github.com/TPanic98/warm-glass-ppt-skill/releases/tag/v1.2.0-rc.1) · [24 个组件的生成源稿](skills/warm-glass-ppt/examples/ui/components.json) · [组件参数清单](skills/warm-glass-ppt/assets/components.json)
 
 ## 快速开始
 
 需要 Node.js 20.9 或以上版本：
 
 ```bash
-git clone https://github.com/TPanic98/warm-glass-ppt-skill.git
+git clone --depth 1 https://github.com/TPanic98/warm-glass-ppt-skill.git
 cd warm-glass-ppt-skill
-npm ci
+npm ci --omit=optional
 npm run demo
 ```
 
-打开 `dist/compose/preview.html` 查看三种内容关系的设计示例，打开同目录的 `deck.pptx` 编辑。它不是所有新任务必须沿用的三页模板。`npm run demo:components` 可生成 24 款组件目录；随包的四类六页 PPTX 和 48 页画廊保留为 `1.2.0-rc.1` 的参考资产，尚未按本次开发版全部重制。
+打开 `dist/compose/preview.html` 查看三种内容关系的设计示例，打开同目录的 `deck.pptx` 编辑。它不是所有新任务必须沿用的三页模板。`npm run demo:components` 可生成 24 页可编辑组件目录。四类六页兼容样例也保留 JSON，可按需生成；旧版成品与 48 页画廊从当前文件树移除，仍可从 1.2 发布归档恢复。
 
 HTML 和 PPTX 共用布局数据，但不同应用的字体、阴影与换行可能不同。正式交付前需要检查实际 PPTX 渲染。生成器提供估算文字边界与画布检查，不会据此宣称已通过 PowerPoint 检查。
 
@@ -46,7 +50,7 @@ HTML 和 PPTX 共用布局数据，但不同应用的字体、阴影与换行可
 npm run install:skill
 ```
 
-默认安装到 `~/.codex/skills/warm-glass-ppt`；`CODEX_HOME` 已设置时，使用其中的 `skills` 目录。安装器完整复制技能与独立依赖锁文件，跳过 `node_modules`，并在安装目录运行 `npm ci`。已存在同名目录时停止，不覆盖个人修改。
+默认安装到 `~/.codex/skills/warm-glass-ppt`；`CODEX_HOME` 已设置时，使用其中的 `skills` 目录。安装器与 ZIP 打包器共用文件清单，复制必要源码及独立锁文件，再运行 `npm ci --omit=optional --ignore-scripts`。已存在同名目录时停止，不覆盖个人修改。依赖仍需另行安装，不计入技能 ZIP 的体积；生成和原图提取不需要可选 `sharp`，明确需要裁切时才在技能目录运行 `npm ci --include=optional`。
 
 其他支持 Agent Skills 的工具可以使用同一个技能目录。例如安装到自选目录：
 
@@ -94,7 +98,7 @@ node scripts/review.mjs verify output/my-deck
 
 图表保留原生数据与嵌入式工作簿，表格保留单元格、行列与边框。组件的文字和形状按实例分组，图表、表格和附着连接线保持独立，修改节点后需复核连线路由。字体未嵌入；安装一致字体后仍需检查实际应用的排版。
 
-旧版 11 类简易版式继续通过 `scripts/build.mjs` 使用，`npm run demo:legacy` 可生成旧格式示例。新旧输入分别采用 1672×941 和 1600×900 画布，不混用坐标。生成器不宣称能自动编辑任意现有 PPTX。
+旧版 11 类简易版式继续通过 `scripts/build.mjs` 使用；完整仓库内的 `npm run demo:legacy` 使用 `examples/legacy/` 生成兼容示例。新旧输入分别采用 1672×941 和 1600×900 画布，不混用坐标。生成器不宣称能自动编辑任意现有 PPTX。
 
 ## 可选：检查参考 PPT 中的图像
 
@@ -111,7 +115,7 @@ node skills/warm-glass-ppt/scripts/extract-assets.mjs reference.pptx --out extra
 
 参考 HTML 的六组渐变、暖白色板、玻璃材质和品牌保护区已转入[视觉规范](skills/warm-glass-ppt/references/visual-system.md)与设计变量。保留 1672×941 参考画布，按内容设计页内结构；用户提供品牌时保留其原始比例和位置。公开默认不注入包名、口号、机构标识或右上角样板页码。
 
-设计变量来自参考材料的规范化提炼，属于视觉复现建议，不是任何银行的官方 VI。原始课件、业务数字、标识、付费字体与本地提取素材不随仓库发布。字体不嵌入：请在编辑与投屏设备安装一致的中文字体。[资产来源](docs/ASSETS.md)说明了随包插画与公开内容的范围。
+设计变量来自参考材料的规范化提炼，属于视觉复现建议，不是任何银行的官方 VI。原始课件、业务数字、标识、付费字体与本地提取素材不随仓库发布。字体不嵌入：请在编辑与投屏设备安装一致的中文字体。[资产来源](docs/ASSETS.md)说明了可选旧插画与公开内容的范围。
 
 ## 维护与发布
 
@@ -121,13 +125,13 @@ npm run audit:public
 npm run package:skill
 ```
 
-测试覆盖新旧输入、自由构图、原始品牌、封面单一标题、图表表格、容量、内容引用与可见状态、关系断言、当前文件审阅及陈旧记录拒绝。回执协议单测中的小 PNG 仅测试文件状态，不计作视觉验收。跨宿主陌生材料测试仍单独记录，见[任务与边界](docs/CONTENT_LED_EVALS.md)。打包命令仅生成本地 ZIP 和 SHA-256，不创建远程版本或上传文件。[旧版测试记录](docs/TEST_REPORT.md)及[发布说明](docs/RELEASE_REVIEW.md)保留当时的实际验证范围。
+测试覆盖新旧输入、自由构图、原始品牌、封面单一标题、图表表格、容量、内容引用与可见状态、关系断言、当前文件审阅及陈旧记录拒绝。安装器与打包器只收录清单内的文件，技能 ZIP 限 256 KiB、未压缩源码限 1 MiB，防止新增大素材误入。回执协议单测中的小 PNG 仅测试文件状态，不计作视觉验收。跨宿主陌生材料测试仍单独记录，见[任务与边界](docs/CONTENT_LED_EVALS.md)。打包命令仅生成本地 ZIP 和 SHA-256，不创建远程版本或上传文件。[旧版测试记录](docs/TEST_REPORT.md)及[发布说明](docs/RELEASE_REVIEW.md)保留当时的实际验证范围。
 
-[本地 alpha.2 验证记录](docs/CONTENT_LED_ALPHA2_TESTS.md)：25 项测试与四类材料 9 页实际渲染审阅通过，独立安装通过；未完成 WorkBuddy 盲测或 WPS 实机交互。
+[alpha.2 验证记录](docs/CONTENT_LED_ALPHA2_TESTS.md)：28 项测试通过（含 3 项分发回归），四类材料 9 页实际渲染审阅通过，精简包独立安装通过；未完成 WorkBuddy 盲测或 WPS 实机交互。
 
 ## English quick start
 
-For reports, talks, training and product introductions. Install Node.js 20.9+, clone this repository, run `npm ci` and `npm run demo`. Install the agent skill with `npm run install:skill`, then invoke `$warm-glass-ppt`. Use `report`, `talk`, `training` or `product` to record narrative intent. The offline generator produces native editable text, shapes and gradient-stop transparency plus a self-contained HTML design preview. It is reference-informed, unbranded and does not require an API key. Inspect the actual PPTX in your presentation application before delivery.
+For reports, talks, training and product introductions. Install Node.js 20.9+, shallow-clone this repository, run `npm ci --omit=optional` and `npm run demo`. Install the agent skill with `npm run install:skill`, then invoke `$warm-glass-ppt`. Use `report`, `talk`, `training` or `product` to record narrative intent. The offline generator produces native editable text, shapes and gradient-stop transparency plus a self-contained HTML design preview. It is reference-informed, unbranded and does not require an API key. Inspect the actual PPTX in your presentation application before delivery.
 
 ## License
 

@@ -11,7 +11,7 @@ import {validateBrief,makeScene,resolveAsset,wrapText,narrativeModes,tokens} fro
 import {readPptx} from '../skills/warm-glass-ppt/lib/pptx-assets.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const example=path.join(root,'skills/warm-glass-ppt/examples/showcase.json');
+const example=path.join(root,'examples/legacy/showcase.json');
 test('reference showcase covers all 11 layouts with native objects and gradients',async()=>{
  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'warm-glass-test-'));const out=path.join(tmp,'deck');const report=await build(example,out);assert.equal(report.slideCount,11);
  const ppt=await JSZip.loadAsync(await fs.readFile(path.join(out,'deck.pptx')));const first=await ppt.file('ppt/slides/slide1.xml').async('string');assert.match(first,/<a:t>/);assert.match(first,/<p:pic>/);
@@ -30,7 +30,7 @@ test('all four narrative examples build, with the legacy talk alias preserved',a
  assert.deepEqual(narrativeModes,['report','talk','training','product']);
  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'warm-glass-modes-'));
  for(const mode of narrativeModes){
-  const input=path.join(root,'skills/warm-glass-ppt/examples',`${mode}.json`);
+  const input=path.join(root,'examples/legacy',`${mode}.json`);
   const brief=JSON.parse(await fs.readFile(input,'utf8'));assert.equal(brief.mode,mode);
   const result=await build(input,path.join(tmp,mode));assert.equal(result.slideCount,brief.slides.length);
   const scene=JSON.parse(await fs.readFile(path.join(tmp,mode,'scene.json'),'utf8'));assert.equal(scene.mode,mode);

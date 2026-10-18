@@ -3,7 +3,7 @@
   "mode": "product",
   "brand": {"name": "PRODUCT STUDIO", "tagline": "Fit the product to the work"},
   "slides": [
-    {"layout":"cover","title":"文档协作产品介绍","subtitle":"虚构产品结构示例，能力与证据需按实际情况替换。","image":"@assets/glass-journey.png"},
+    {"layout":"cover","title":"文档协作产品介绍","subtitle":"虚构产品结构示例，能力与证据需按实际情况替换。","image":"assets/glass-journey.png"},
     {"layout":"comparison","title":"目标用户与使用问题","items":[{"title":"目标用户","details":["填写需要共同编写文档的角色","说明当前工作流程","确认使用环境与限制"]},{"title":"需要解决的问题","details":["填写已调研的具体困难","说明对用户工作的影响","列出可验证的使用目标"]}],"takeaway":"先确认用户问题，再选择需要介绍的产品能力。"},
     {"layout":"process","title":"一次代表性的产品使用流程","items":[{"title":"准备资料","body":"示例：选择本次任务材料"},{"title":"协同处理","body":"示例：编写并检查内容"},{"title":"确认结果","body":"示例：审核后交付文档"}],"takeaway":"这是流程示例，不代表任何真实产品已提供这些能力。"},
     {"layout":"columns","title":"采用前需要确认的条件","items":[{"title":"能力与范围","details":["区分可用、试点与规划能力","说明不适用的情况"]},{"title":"接入与证据","details":["确认权限与数据处理方式","补充真实演示或验证记录"]},{"title":"下一步","details":["约定试用或需求讨论","明确成功标准和责任人"]}],"takeaway":"效果、价格和客户案例均以可核实的材料为准。"}

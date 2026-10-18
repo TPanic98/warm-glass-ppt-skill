@@ -1,6 +1,6 @@
 # Native UI components
 
-Use this reference to choose C01–C24, edit UI briefs, or combine components. The index at `../assets/components.json` is the parameter and capacity catalog. The matching editable examples are in `../assets/component-library.pptx`; their input is `../examples/ui/components.json`.
+Use this reference to choose C01–C24, edit UI briefs, or combine components. The index at `../assets/components.json` is the parameter and capacity catalog. Generate editable examples from `../examples/ui/components.json`: run `node scripts/build-ui.mjs examples/ui/components.json --out output/components` from the skill directory. Prebuilt decks and page renders are not installed with the skill.
 
 This is the compatibility/component route. For new material whose relationships need a different composition, read `composition.md` and freely position native objects. Catalog capacities are not a reason to change the user's story or split a page mechanically.
 

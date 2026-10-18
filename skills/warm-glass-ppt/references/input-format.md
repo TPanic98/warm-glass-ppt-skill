@@ -1,6 +1,6 @@
 # JSON brief
 
-The entrypoint accepts UTF-8 JSON. `title` and `slides` are required. Each slide needs `layout` and `title`. Unknown fields fail explicitly so a typo does not silently drop content. Paths are relative to the brief; `@assets/name.png` resolves inside this installed skill.
+The entrypoint accepts UTF-8 JSON. `title` and `slides` are required. Each slide needs `layout` and `title`. Unknown fields fail explicitly so a typo does not silently drop content. Paths are relative to the brief; supply original local artwork when using an image. The compatibility alias `@assets/name.png` resolves inside the skill, but the lean installation ships no artwork.
 
 ```json
 {
@@ -14,7 +14,7 @@ The entrypoint accepts UTF-8 JSON. `title` and `slides` are required. Each slide
       "layout": "cover",
       "title": "从试点走向\n稳定交付",
       "subtitle": "一个可验证、可持续的改进计划",
-      "image": "@assets/glass-journey.png"
+      "image": "assets/your-original-artwork.png"
     },
     {
       "layout": "process",

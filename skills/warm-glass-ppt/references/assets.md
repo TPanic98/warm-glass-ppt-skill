@@ -14,7 +14,7 @@ For an explicit region request, provide a JSON array:
 ]
 ```
 
-Coordinates are pixels of the selected original embedded image, not preview pixels or PowerPoint inches. `sharp` is needed for crops. A crop retains its source background and pixel content. It does not gain alpha, vector editability or resolution. Check the gallery for clipped edges, labels and brand content before reusing it.
+Coordinates are pixels of the selected original embedded image, not preview pixels or PowerPoint inches. Cropping alone needs optional `sharp`: run `npm ci --include=optional` in the skill directory when crops are requested. Basic generation and original-image extraction work without it. A crop retains its source background and pixel content. It does not gain alpha, vector editability or resolution. Check the gallery for clipped edges, labels and brand content before reusing it.
 
 ## New 3D artwork
 
@@ -24,7 +24,7 @@ Suggested prompt:
 
 > A premium isometric enterprise technology illustration of [subject], thick clear layered glass, warm-white studio light, amber and coral refraction, restrained orange-red focal point, soft contact shadow. Place the subject in [image frame] with breathing room for slide text. No text, numerals, brands or watermark. [Transparent background or warm-white canvas as needed].
 
-Record prompt, source, original dimensions and actual transparency for each shipped asset. `assets/glass-journey.png`, when present, is an AI-generated generic illustration; it carries no source-deck business content or logos.
+Record prompt, source, original dimensions and actual transparency for each shipped asset. The lean skill ships no illustration or reference screenshots; original local artwork is supplied per task. The repository's optional legacy illustration is separate from the installed skill.
 
 ## Public distribution
 

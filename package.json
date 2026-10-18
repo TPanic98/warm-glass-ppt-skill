@@ -17,7 +17,7 @@
     "demo:talk": "node skills/warm-glass-ppt/scripts/build-ui.mjs skills/warm-glass-ppt/examples/ui/talk.json --out dist/ui/talk",
     "demo:training": "node skills/warm-glass-ppt/scripts/build-ui.mjs skills/warm-glass-ppt/examples/ui/training.json --out dist/ui/training",
     "demo:product": "node skills/warm-glass-ppt/scripts/build-ui.mjs skills/warm-glass-ppt/examples/ui/product.json --out dist/ui/product",
-    "demo:legacy": "node skills/warm-glass-ppt/scripts/build.mjs skills/warm-glass-ppt/examples/showcase.json --out dist/legacy",
+    "demo:legacy": "node skills/warm-glass-ppt/scripts/build.mjs examples/legacy/showcase.json --out dist/legacy",
     "test": "node --test tests/*.test.mjs",
     "audit:public": "node scripts/audit-public.mjs",
     "install:skill": "node scripts/install-skill.mjs",
