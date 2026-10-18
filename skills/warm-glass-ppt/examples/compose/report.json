@@ -1,0 +1,28 @@
+{
+ "schema":"warm-glass-compose/v1","title":"馆藏数字化阶段评审示例","mode":"report",
+ "context":{"audience":"项目评审人","goal":"决定是否借调一名审核员，并理解两条工作线的计划关系","constraints":["两页短汇报","保留不同时间粒度","不把示例计划写成实际成果"]},
+ "sources":[{"id":"S1","title":"虚构计划：整理线 11月上半月建目录，下半月试审核；平台线整月完成权限与导入；借调一名审核员需评审决定","kind":"example"}],
+ "slides":[
+  {"title":"请确认一名审核员的借调安排","role":"body","plan":{"job":"先提出待决策事项及取舍","mainPoint":"借调支持试审核，但会占用日常审核时间","evidence":"S1，虚构计划","relationship":"决策与资源取舍","composition":"左侧提出决定，右侧说明收益与代价","claims":[{"id":"request","text":"借调一名审核员是待决策安排","status":"planned","sourceRefs":["S1"],"elements":["request"],"statusElement":"status"}],"reviewQuestions":["是否让评审人看清要决定什么，以及资源代价？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":110,"w":1500,"h":100,"size":58,"bold":true,"text":"请确认一名审核员的借调安排"},
+   {"id":"request","type":"text","x":80,"y":345,"w":700,"h":180,"size":62,"bold":true,"color":"@accentText","text":"借调 1 名审核员\n支持试审核"},
+   {"id":"benefit","type":"text","x":990,"y":340,"w":580,"h":150,"size":32,"text":"预期用途\n核对目录与原件，形成审核规则"},
+   {"id":"cost","type":"text","x":990,"y":560,"w":580,"h":150,"size":32,"text":"资源代价\n需重新安排日常审核工作"},
+   {"id":"status","type":"text","x":80,"y":845,"w":1470,"h":45,"size":22,"color":"@muted","text":"虚构计划示例；借调待确认，不代表已批准或已完成。"}
+  ]},
+  {"title":"两条工作线共用十一月时间轴","role":"body","plan":{"job":"解释并行工作的时间关系","mainPoint":"整理按半月推进，平台建设按整月推进","relationship":"不同跨度的并行计划","composition":"共用两列时间刻度，平台轨横跨两列","evidence":"S1","relations":[{"type":"aligned","axis":"x","anchor":"start","elements":["catalog","platform"]}],"reviewQuestions":["是否保留平台工作跨整月，而非把它拆成两项虚构里程碑？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":90,"w":1500,"h":100,"size":56,"bold":true,"text":"两条工作线共用十一月时间轴"},
+   {"id":"date-a","type":"text","x":410,"y":285,"w":470,"h":60,"size":32,"bold":true,"color":"@accentText","text":"11 月上半月"},
+   {"id":"date-b","type":"text","x":1030,"y":285,"w":470,"h":60,"size":32,"bold":true,"color":"@accentText","text":"11 月下半月"},
+   {"id":"lane-a","type":"text","x":80,"y":420,"w":260,"h":60,"size":32,"bold":true,"text":"整理工作线"},
+   {"id":"catalog","type":"shape","x":400,"y":400,"w":530,"h":145,"geometry":"roundRect","fill":"@glass"},
+   {"id":"catalog-text","type":"text","x":430,"y":440,"w":460,"h":60,"size":32,"text":"建立目录"},
+   {"id":"review","type":"shape","x":1010,"y":400,"w":530,"h":145,"geometry":"roundRect","fill":"@glass"},
+   {"id":"review-text","type":"text","x":1040,"y":440,"w":460,"h":60,"size":32,"text":"试审核与规则核对"},
+   {"id":"lane-b","type":"text","x":80,"y":655,"w":260,"h":60,"size":32,"bold":true,"text":"平台工作线"},
+   {"id":"platform","type":"shape","x":400,"y":630,"w":1140,"h":145,"geometry":"roundRect","fill":"@focus"},
+   {"id":"platform-text","type":"text","x":430,"y":674,"w":1080,"h":60,"size":32,"bold":true,"text":"整月：权限配置与资料导入"},
+   {"id":"status","type":"text","x":80,"y":855,"w":1470,"h":40,"size":22,"color":"@muted","text":"虚构计划示例；仅表示计划先后与跨度，不表示实际完成率。"}
+  ]}
+ ]
+}

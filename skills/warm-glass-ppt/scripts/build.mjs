@@ -6,7 +6,7 @@ import {renderPptx,renderHtml} from '../lib/render.mjs';
 
 export async function build(input,output,{force=false}={}){
  const detected=JSON.parse(await fs.readFile(input,'utf8'));
- if(detected.schema==='warm-glass-ui/v2'){const {buildUi}=await import('./build-ui.mjs');return buildUi(input,output,{force});}
+ if(['warm-glass-ui/v2','warm-glass-compose/v1'].includes(detected.schema)){const {buildUi}=await import('./build-ui.mjs');return buildUi(input,output,{force});}
  const {brief,briefDir}=await readBrief(input);const scene=makeScene(brief);const out=path.resolve(output);
  const names=['deck.pptx','preview.html','scene.json','validation.json'];
  for(const n of names){try{await fs.access(path.join(out,n));if(!force)throw Error(`Output already exists: ${path.join(out,n)}. Choose another directory or use --force.`);}catch(e){if(e.code!=='ENOENT')throw e;}}

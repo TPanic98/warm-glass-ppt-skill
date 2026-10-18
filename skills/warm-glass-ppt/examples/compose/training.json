@@ -1,0 +1,24 @@
+{
+ "schema":"warm-glass-compose/v1","title":"把含糊请求改成可验收任务","mode":"training",
+ "context":{"audience":"新入职员工","goal":"能写出带范围、输出与验收条件的任务说明","durationMinutes":12},
+ "sources":[{"id":"S1","title":"虚构练习：原请求为把清单整理一下；澄清后限定本月工单，按重复原因归类，输出三列清单并由请求者核对","kind":"example"}],
+ "slides":[
+  {"title":"从“整理一下”到可验收任务","role":"body","plan":{"job":"展示澄清前后对照","mainPoint":"范围、输出和验收条件决定任务是否可执行","relationship":"同一请求的前后对照","composition":"左侧保留含糊原句，右侧展开澄清后的完整说明","evidence":"S1","reviewQuestions":["修改后的任务是否同时包含范围、输出和验收人？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":90,"w":1500,"h":100,"size":58,"bold":true,"text":"从“整理一下”到可验收任务"},
+   {"id":"before-label","type":"text","x":100,"y":280,"w":500,"h":60,"size":30,"bold":true,"color":"@muted","text":"原始请求"},
+   {"id":"before","type":"text","x":100,"y":390,"w":570,"h":180,"size":54,"bold":true,"text":"把清单\n整理一下。"},
+   {"id":"region","type":"shape","x":790,"y":270,"w":790,"h":480,"geometry":"roundRect","fill":"@glass"},
+   {"id":"after-label","type":"text","x":840,"y":310,"w":680,"h":60,"size":32,"bold":true,"color":"@accentText","text":"澄清后的说明"},
+   {"id":"after","type":"text","x":840,"y":415,"w":680,"h":270,"size":30,"text":"范围：本月工单\n输出：原因、数量、原始编号三列\n方法：按重复原因归类\n验收：由请求者核对分类与原件"},
+   {"id":"status","type":"text","x":90,"y":850,"w":1450,"h":40,"size":22,"color":"@muted","text":"虚构教学示例；不含真实客户或员工数据。"}
+  ]},
+  {"title":"练习：写出一段可交接的任务说明","role":"body","plan":{"job":"让学员独立产出并自检","mainPoint":"用明确范围、输出和验收依据消除歧义","relationship":"练习输入与评估标准","composition":"上方给原请求，下面给提交物与核对标准","evidence":"基于 S1 的迁移练习","relations":[{"type":"containment","container":"exercise","children":["prompt"]}],"reviewQuestions":["练习输入、预期输出和评价标准是否能对应起来？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":90,"w":1500,"h":100,"size":56,"bold":true,"text":"练习：写出一段可交接的任务说明"},
+   {"id":"exercise","type":"shape","x":90,"y":280,"w":1490,"h":190,"geometry":"roundRect","fill":"@focus"},
+   {"id":"prompt","type":"text","x":135,"y":330,"w":1390,"h":100,"size":36,"bold":true,"text":"原请求：帮我看看这些反馈。\n先写出你要向请求者确认的三个问题。"},
+   {"id":"output","type":"text","x":100,"y":555,"w":650,"h":190,"size":30,"text":"提交物（3 分钟）\n一段任务说明，包含：\n材料范围、具体输出、验收依据"},
+   {"id":"criteria","type":"text","x":900,"y":555,"w":650,"h":220,"size":30,"text":"同伴核对\n范围能界定吗？输出能拿到吗？\n谁用什么依据验收？\n缺少的信息是否标为待确认？"},
+   {"id":"status","type":"text","x":90,"y":850,"w":1450,"h":40,"size":22,"color":"@muted","text":"练习为虚构任务；先澄清，不自行补造业务条件。"}
+  ]}
+ ]
+}

@@ -40,11 +40,12 @@ function validateProps(code,p){
  const max=p.max??p.trend?.max,values=code==='C14'?p.series?.flatMap(s=>s.values):code==='C15'?[...p.target,...p.actual]:p.trend?.values;if(max!==undefined&&(!Number.isFinite(max)||max<=0||(values&&max<Math.max(...values))))throw Error('Chart maximum must cover all values');
 }
 export function validateUiBrief(b){
- own(b,['schema','title','mode','font','slides'],'brief');
+ own(b,['schema','title','mode','font','brand','slides'],'brief');
  if(b.schema!=='warm-glass-ui/v2')throw Error('schema must be warm-glass-ui/v2');
  if(typeof b.title!=='string'||!b.title.trim())throw Error('title must be non-empty');
  if(b.mode&&!['components','report','talk','training','product'].includes(b.mode))throw Error('Unsupported mode');
  if(b.font!==undefined&&(typeof b.font!=='string'||!/^[\p{L}\p{N} _.-]{1,100}$/u.test(b.font)))throw Error('font: plain font-family name required');
+ if(b.brand!==undefined){own(b.brand,['name','sloganEn','sloganCn'],'brand');textField(b.brand.name,'brand.name');for(const key of ['sloganEn','sloganCn'])if(b.brand[key]!==undefined)textField(b.brand[key],'brand.'+key);}
  if(!Array.isArray(b.slides)||b.slides.length<1||b.slides.length>100)throw Error('slides: expected 1–100');
  for(const [i,s]of b.slides.entries()){
   own(s,['title','subtitle','accent','category','footer','notes','code','components'],`slide ${i+1}`);
@@ -57,7 +58,7 @@ export function validateUiBrief(b){
 }
 export function makeUiScene(brief){
  validateUiBrief(brief);const p=new ScenePresentation();const pages=[];
- for(const s of brief.slides){const slide=p.slides.add(),a=new Painter(p,slide);header(a);pageTitle(a,s.title,{subtitle:s.subtitle,accent:s.accent,category:s.category});for(const c of s.components)draw(a,c.code,c.props);const data=s.components.filter(c=>['C05','C14','C15'].includes(c.code)),demo=data.some(c=>c.props.demonstration===true);let foot=s.footer||'';if(demo&&!/演示|虚构|示例/.test(foot))foot='演示数据，非实际业务成果。'+foot;if(!foot&&data.some(c=>c.props.source))foot='来源：'+data.filter(c=>c.props.source).map(c=>c.props.source).join('、');if(foot)footer(a,foot);slide.speakerNotes.text=[s.notes||'',...data.map(c=>c.props.demonstration===true?'Demonstration data only.':'Source: '+c.props.source)].filter(Boolean).join('\n');pages.push({painter:a,slide,title:s.title,kind:brief.mode==='components'?'component':'scenario',purpose:brief.mode,code:s.code});}
+ for(const s of brief.slides){const slide=p.slides.add(),a=new Painter(p,slide);header(a,brief.brand);const hero=brief.mode!=='components'&&s.components.some(c=>['C23','C24'].includes(c.code));if(!hero)pageTitle(a,s.title,{subtitle:s.subtitle,accent:s.accent,category:s.category});for(const c of s.components)draw(a,c.code,c.props);const data=s.components.filter(c=>['C05','C14','C15'].includes(c.code)),demo=data.some(c=>c.props.demonstration===true);let foot=s.footer||'';if(demo&&!/演示|虚构|示例/.test(foot))foot='演示数据，非实际业务成果。'+foot;if(!foot&&data.some(c=>c.props.source))foot='来源：'+data.filter(c=>c.props.source).map(c=>c.props.source).join('、');if(foot)footer(a,foot);slide.speakerNotes.text=[s.notes||'',...data.map(c=>c.props.demonstration===true?'Demonstration data only.':'Source: '+c.props.source)].filter(Boolean).join('\n');pages.push({painter:a,slide,title:s.title,kind:brief.mode==='components'?'component':'scenario',purpose:brief.mode,code:s.code});}
  return sceneFromPages(brief,pages);
 }
 export function sceneFromPages(brief,pages){

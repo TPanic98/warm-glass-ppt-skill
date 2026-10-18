@@ -1,0 +1,24 @@
+{
+ "schema":"warm-glass-compose/v1","title":"结果与证据：短讲示例","mode":"talk",
+ "context":{"audience":"非技术团队","goal":"理解交付结果与可复核证据的区别","durationMinutes":6},
+ "sources":[{"id":"S1","title":"虚构经历：收到一份汇总表，发现缺少时间范围和原始记录，无法复核；补齐依据后才确认","kind":"example"}],
+ "slides":[
+  {"title":"一份结果，为什么还不够？","role":"cover","plan":{"job":"用具体问题引出主张","mainPoint":"有结果不等于具备判断依据","relationship":"问题与悬念","composition":"大问题居左，经历的一句关键困惑居下","evidence":"S1"},"elements":[
+   {"id":"title","type":"text","role":"title","x":90,"y":270,"w":1490,"h":150,"size":82,"bold":true,"text":"一份结果，为什么还不够？"},
+   {"id":"question","type":"text","x":95,"y":550,"w":1410,"h":110,"size":36,"color":"@muted","text":"我看到了汇总表，却不知道该从哪里复核。"},
+   {"id":"status","type":"text","x":95,"y":855,"w":1450,"h":35,"size":21,"color":"@muted","text":"虚构经历，用于解释概念。"}
+  ]},
+  {"title":"把结果与依据一起交接","role":"body","plan":{"job":"讲清从结果到判断的机制","mainPoint":"证据让接收者能够复核，而非只接受结论","relationship":"结果、依据与判断的有向关系","composition":"中间强调可复核依据，两侧分别是结果与判断","evidence":"S1","relations":[{"type":"directed","from":"result","to":"evidence","via":"a"},{"type":"directed","from":"evidence","to":"decision","via":"b"}],"reviewQuestions":["箭头表达的是判断所需依据，而非未经证明的效率提升吗？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":110,"w":1500,"h":100,"size":58,"bold":true,"text":"把结果与依据一起交接"},
+   {"id":"result","type":"shape","x":80,"y":375,"w":380,"h":200,"geometry":"roundRect","fill":"@glass"},
+   {"id":"result-text","type":"text","x":110,"y":430,"w":320,"h":100,"size":32,"text":"交付结果\n一份汇总表"},
+   {"id":"evidence","type":"shape","x":630,"y":330,"w":430,"h":290,"geometry":"roundRect","fill":"@focus"},
+   {"id":"evidence-text","type":"text","x":665,"y":385,"w":360,"h":180,"size":32,"bold":true,"text":"可复核依据\n时间范围\n原始记录"},
+   {"id":"decision","type":"shape","x":1230,"y":375,"w":360,"h":200,"geometry":"roundRect","fill":"@glass"},
+   {"id":"decision-text","type":"text","x":1260,"y":430,"w":300,"h":100,"size":32,"text":"接收者判断\n复核后确认"},
+   {"id":"a","type":"connector","from":"result","to":"evidence"},{"id":"b","type":"connector","from":"evidence","to":"decision"},
+   {"id":"close","type":"text","x":90,"y":760,"w":1450,"h":60,"size":36,"color":"@accentText","text":"下次交付时，多问一句：对方能据此复核吗？"},
+   {"id":"status","type":"text","x":90,"y":865,"w":1450,"h":35,"size":21,"color":"@muted","text":"虚构经历说明，不作效果或效率数据承诺。"}
+  ]}
+ ]
+}

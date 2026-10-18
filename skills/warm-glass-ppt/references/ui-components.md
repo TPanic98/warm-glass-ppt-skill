@@ -2,6 +2,8 @@
 
 Use this reference to choose C01–C24, edit UI briefs, or combine components. The index at `../assets/components.json` is the parameter and capacity catalog. The matching editable examples are in `../assets/component-library.pptx`; their input is `../examples/ui/components.json`.
 
+This is the compatibility/component route. For new material whose relationships need a different composition, read `composition.md` and freely position native objects. Catalog capacities are not a reason to change the user's story or split a page mechanically.
+
 ## Choose a relationship
 
 | Content relationship | Families |
@@ -44,7 +46,7 @@ The schema identifier selects the native component format. Coordinates are CSS p
 }
 ```
 
-Top-level fields are `schema`, `title`, optional `mode`, optional `font`, and `slides`. Modes are `report`, `talk`, `training`, `product`, or `components` for the catalog. Slide fields are `title`, optional `subtitle`, `accent`, `category`, `footer`, `notes`, `code`, and `components`. Each instance has `code` and `props`. The catalog lists family-specific properties; all instances also need `x`, `y`, `w`, `h`. Unsupported fields fail rather than disappear silently.
+Top-level fields are `schema`, `title`, optional `mode`, optional `font`, optional text-only `brand:{name,sloganEn,sloganCn}`, and `slides`. The default is unbranded. Use the composition route for original image headers. Modes are `report`, `talk`, `training`, `product`, or `components` for the catalog. Slide fields are `title`, optional `subtitle`, `accent`, `category`, `footer`, `notes`, `code`, and `components`. Each instance has `code` and `props`. The catalog lists family-specific properties; all instances also need `x`, `y`, `w`, `h`. Unsupported fields fail rather than disappear silently. Scenario cover and transition components own their titles, rather than receiving an additional body-page title.
 
 Start content around Y344, leave the footer rule at Y868 and keep objects inside the canvas. Typical page title size is 62 px and body text 23–28 px. The renderer rejects estimated text overflow; this is a conservative metric check, not an application-rendering guarantee. Reword or split crowded content before shrinking it.
 

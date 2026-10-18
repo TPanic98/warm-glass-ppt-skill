@@ -4,20 +4,24 @@
 
 它包含可安装的 Agent Skill、叙事与设计规范，以及能离线运行的 PPTX / HTML 生成器。无需 API Key。图像生成能力是可选项。
 
+本地开发版 `1.3.0-alpha.2` 采用**内容驱动的自由构图**，新增可执行的内容关系检查、实际 PPTX 渲染与当前文件审阅记录。先明确听众、目标和逐页判断，再安排原生对象；固定的是颜色、字体与材质，而不是整页骨架。品牌显式输入，默认不带示例 Logo 或 slogan。此开发版尚未发布到 GitHub。[内容策划](skills/warm-glass-ppt/references/content-planning.md) · [自由构图格式](skills/warm-glass-ppt/references/composition.md) · [审阅流程](skills/warm-glass-ppt/references/review.md) · [技能对标](docs/PPT_SKILL_BENCHMARK.md)。
+
 `1.2.0-rc.1` 预发布版包含 **24 个通用组件、四类用途各 6 页样例**。已完成独立安装、离线生成、48 页实际渲染与 LibreOffice 打开另存测试。Microsoft PowerPoint 实机交互尚未验证，字体未嵌入，详见[测试记录](docs/TEST_REPORT.md)。[下载预发布包](https://github.com/TPanic98/warm-glass-ppt-skill/releases/tag/v1.2.0-rc.1)。
 
 ## 四类用途
 
 | 用途 | 叙事重点 | 输入模式 | 示例 |
 | --- | --- | --- | --- |
-| 汇报 | 结论与进展、证据与偏差、风险与待决策事项 | `report` | [6 页输入](skills/warm-glass-ppt/examples/ui/report.json) / [可编辑样例](skills/warm-glass-ppt/examples/ui/report.pptx) |
-| 演讲 | 核心观点、解释与案例、面向听众的启示 | `talk` | [6 页输入](skills/warm-glass-ppt/examples/ui/talk.json) / [可编辑样例](skills/warm-glass-ppt/examples/ui/talk.pptx) |
-| 培训 | 学习目标、概念与示例、练习与评估 | `training` | [6 页输入](skills/warm-glass-ppt/examples/ui/training.json) / [可编辑样例](skills/warm-glass-ppt/examples/ui/training.pptx) |
-| 产品介绍 | 目标用户、场景与价值、能力证据与采用条件 | `product` | [6 页输入](skills/warm-glass-ppt/examples/ui/product.json) / [可编辑样例](skills/warm-glass-ppt/examples/ui/product.pptx) |
+| 汇报 | 结论与进展、证据与偏差、风险与待决策事项 | `report` | [馆藏项目评审：资源取舍与并行计划](skills/warm-glass-ppt/examples/compose/report.json) |
+| 演讲 | 核心观点、解释与案例、面向听众的启示 | `talk` | [结果与证据：问题与解释](skills/warm-glass-ppt/examples/compose/talk.json) |
+| 培训 | 学习目标、概念与示例、练习与评估 | `training` | [含糊请求：前后对照与练习](skills/warm-glass-ppt/examples/compose/training.json) |
+| 产品介绍 | 目标用户、场景与价值、能力证据与采用条件 | `product` | [巡检协作：任务闭环与采用边界](skills/warm-glass-ppt/examples/compose/product.json) |
 
-四类用途共用视觉规范，不限制演讲者职级或所在行业。路线图、架构图等属于可用于不同用途的页面版式。`mode` 记录叙事意图；技能据此组织内容，离线生成器排版已有文案，不会自动改写或补造事实。
+四类用途共用视觉规范，不限制演讲者职级或所在行业。上述材料均为虚构回归用例，采用不同内容与页结构，不是把同一个文件只改 `mode`。可用 `npm run demo:content:report` 等四个命令生成到 `dist/content/`。这些页数不是用户任务的默认页数。路线图、架构图等属于不同用途均可采用的页面构图。`mode` 记录叙事意图；离线生成器排版已有文案，不会自动策划或补造事实。
 
-![四类用途示例](docs/ui-gallery/overview.jpg)
+以下为 1.2 参考资产，不是本轮重新生成的开发版效果：
+
+![1.2 四类用途示例](docs/ui-gallery/overview.jpg)
 
 [48 页效果画廊，下载完整仓库后本地打开](docs/ui-gallery/index.html) · [24 页可编辑组件库](skills/warm-glass-ppt/assets/component-library.pptx) · [组件参数清单](skills/warm-glass-ppt/assets/components.json)
 
@@ -32,7 +36,7 @@ npm ci
 npm run demo
 ```
 
-打开 `dist/ui/components/preview.html` 查看矢量设计预览，打开同目录的 `deck.pptx` 编辑组件。无需先生成也可以打开随包的可编辑组件库和四类用途样例。
+打开 `dist/compose/preview.html` 查看三种内容关系的设计示例，打开同目录的 `deck.pptx` 编辑。它不是所有新任务必须沿用的三页模板。`npm run demo:components` 可生成 24 款组件目录；随包的四类六页 PPTX 和 48 页画廊保留为 `1.2.0-rc.1` 的参考资产，尚未按本次开发版全部重制。
 
 HTML 和 PPTX 共用布局数据，但不同应用的字体、阴影与换行可能不同。正式交付前需要检查实际 PPTX 渲染。生成器提供估算文字边界与画布检查，不会据此宣称已通过 PowerPoint 检查。
 
@@ -59,15 +63,32 @@ node scripts/install-skill.mjs --dest /your/agent/skills/warm-glass-ppt
 
 ## 自己生成 PPT
 
-按用途复制并修改 `skills/warm-glass-ppt/examples/ui/` 中的 JSON 文件，然后运行：
+先根据实际材料写逐页意图和关系，再按[自由构图格式](skills/warm-glass-ppt/references/composition.md)编写 `warm-glass-compose/v1` 输入。新稿的默认路径不再是复制六页 JSON。然后运行：
 
 ```bash
 node skills/warm-glass-ppt/scripts/build-ui.mjs my-brief.json --out output/my-deck
 ```
 
-也可运行 `npm run demo:report`、`npm run demo:talk`、`npm run demo:training`、`npm run demo:product`，分别生成四类结构示例。
+原有 `warm-glass-ui/v2` 输入继续受支持。只有用户明确选择旧模板，或某个局部组件确实适合时，才复用它的几何；`demo:report`、`demo:talk`、`demo:training`、`demo:product` 是旧组件格式的结构示例。
 
 输出包括可编辑文稿、离线预览、布局数据和检查记录。文件已存在时会停止；确实要重新生成同一目录时添加 `--force`。所有图片采用本地 PNG/JPEG 或随包资产，构建过程不请求远程图片服务。
+
+可选的 `context` 与 `sources` 记录听众目标和内容依据；页级 `claims` 区分实际、计划、示例、假设和待核实内容，并引用可见状态文字。`relations` 能检查声明的箭头方向、包含边界和共享刻度对齐。这些检查不替代事实核验或视觉判断。
+
+## 检查实际 PPTX，而非仅看 HTML
+
+安装 LibreOffice 和 Poppler 后，从技能目录运行：
+
+```bash
+node scripts/render-pptx.mjs output/my-deck --out output/my-deck/renders
+node scripts/review.mjs init output/my-deck --render-manifest output/my-deck/renders/render.json
+# 查看每页 PNG，并在 review.json 记录内容、设计和逐页审阅意见
+node scripts/review.mjs verify output/my-deck
+```
+
+审阅记录初始全部待检查，不自动通过。修改输入、原始图片、场景、PPTX、生成实现或渲染后，旧记录失效。核验成功表示当前记录完整，不等于机器证明设计完美。未进行 WPS/PowerPoint 交互时保留 `not-tested`；缺少渲染工具时明确披露，不伪报通过。也可接入宿主的实际 PPTX 渲染器，详见[审阅格式与边界](skills/warm-glass-ppt/references/review.md)。
+
+生成前选择本机和交付端可用的中文字体。检测到字体替换时渲染默认停止；确实接受替换时可显式允许，不能把替换后的效果冒称原字体保真。隔离的 Office 程序还可能需要进程内字体配置；正确提取出中文文本不代表画面没有方框。参见上述审阅文档的字体说明。
 
 组件按关系组织：标题与结论、玻璃容器与定位节点、指标与比较、流程与路线图、嵌套与架构、证据与责任表，以及目录、趋势、目标实绩、二维矩阵、闭环、泳道、输入输出、能力覆盖表、案例、答疑、转场和收束。详细参数与容量见[组件说明](skills/warm-glass-ppt/references/ui-components.md)。支持在一页组合多个组件，不是用截图充当素材。
 
@@ -88,7 +109,7 @@ node skills/warm-glass-ppt/scripts/extract-assets.mjs reference.pptx --out extra
 
 新组件库与四类用途样例均使用原生 PowerPoint 对象，没有图片组件。玻璃表面保留各渐变停靠点的不透明度，文字保持实色。PPT 使用透明填充、细边和软阴影近似玻璃，不包含实时背景模糊或真实折射。旧版示例中的可选玻璃插画是独立图片，不参与新组件实现。
 
-参考 HTML 的六组渐变、暖白色板、玻璃材质和页眉边界已转入[视觉规范](skills/warm-glass-ppt/references/visual-system.md)与设计变量。新组件沿用获认可的 1672×941 画布和页眉，右上角不加样板页码。仅迁移视觉语言，不复制原材料的品牌、课程名称或业务内容。
+参考 HTML 的六组渐变、暖白色板、玻璃材质和品牌保护区已转入[视觉规范](skills/warm-glass-ppt/references/visual-system.md)与设计变量。保留 1672×941 参考画布，按内容设计页内结构；用户提供品牌时保留其原始比例和位置。公开默认不注入包名、口号、机构标识或右上角样板页码。
 
 设计变量来自参考材料的规范化提炼，属于视觉复现建议，不是任何银行的官方 VI。原始课件、业务数字、标识、付费字体与本地提取素材不随仓库发布。字体不嵌入：请在编辑与投屏设备安装一致的中文字体。[资产来源](docs/ASSETS.md)说明了随包插画与公开内容的范围。
 
@@ -100,7 +121,9 @@ npm run audit:public
 npm run package:skill
 ```
 
-测试覆盖新旧输入、24 个组件的覆盖、四类各 6 页样例、原生分组与图表工作簿、表格、附着连接线、渐变透明度、文字容量、图像提取、防覆盖，以及全零和小数图表数据。`docs/github-actions-ci.yml` 是可选 CI 配置，放入 `.github/workflows/ci.yml` 后才启用。打包命令仅生成本地 ZIP 和 SHA-256，不会创建远程版本、推送代码或上传文件。[测试记录](docs/TEST_REPORT.md)列出已执行和未覆盖的检查，[发布说明](docs/RELEASE_REVIEW.md)说明本次范围。
+测试覆盖新旧输入、自由构图、原始品牌、封面单一标题、图表表格、容量、内容引用与可见状态、关系断言、当前文件审阅及陈旧记录拒绝。回执协议单测中的小 PNG 仅测试文件状态，不计作视觉验收。跨宿主陌生材料测试仍单独记录，见[任务与边界](docs/CONTENT_LED_EVALS.md)。打包命令仅生成本地 ZIP 和 SHA-256，不创建远程版本或上传文件。[旧版测试记录](docs/TEST_REPORT.md)及[发布说明](docs/RELEASE_REVIEW.md)保留当时的实际验证范围。
+
+[本地 alpha.2 验证记录](docs/CONTENT_LED_ALPHA2_TESTS.md)：25 项测试与四类材料 9 页实际渲染审阅通过，独立安装通过；未完成 WorkBuddy 盲测或 WPS 实机交互。
 
 ## English quick start
 

@@ -1,42 +1,52 @@
 ---
 name: warm-glass-ppt
-description: Create editable Chinese or bilingual presentations for reports, talks, training and product introductions in a warm-white, orange-red glass style, using reusable native components and offline generation.
+description: Design editable Chinese or bilingual presentations for reports, talks, training and product introductions, using a warm-white orange-red visual system and content-led native composition. Also supports explicitly requested template reuse.
 license: MIT
 metadata:
-  version: "1.2.0-rc.1"
+  version: "1.3.0-alpha.2"
   requires: "Node.js 20.9+ for the offline generator; image generation is optional. No API key is required."
 ---
 
 # Warm Glass PPT
 
-Create a presentation whose narrative and visual system remain consistent across pages. Start from the user's material, audience, duration, slide count, editability needs and delivery format. Infer routine choices from the conversation; a missing preference does not prevent a first draft.
+Create a presentation whose composition explains the user's material. Keep its visual language consistent while choosing the structure of each page from its communication job. Infer routine preferences and preserve explicit slide counts, facts, and delivery requirements.
+
+## Choose the task
+
+- **New material or same-style redesign:** follow the content-led path below. Reuse color, typography and material tokens, then design the page relationships for this material.
+- **Explicitly preserve an existing template:** inspect its pages and native objects, protect its branding and geometry, and change only the requested content. The included examples can serve as templates when the user actually selects them.
+- **Edit an existing file:** preserve the original. Inspect its structure before deciding whether to edit its native objects or rebuild selected pages in a new version.
 
 ## Choose the narrative
 
-Read [narrative.md](references/narrative.md) to choose among four uses: report (汇报), talk (演讲), training (培训) or product (产品介绍). These describe the communication goal, not the presenter's seniority or a particular industry. For a mixed assignment, use the dominant purpose and adapt supporting sections. Set one job and one main statement for each slide. Keep evidence and future plans distinct; keep a metric on the page that owns its explanation. A section divider marks a transition and does not repeat the following page's argument.
+Read [content-planning.md](references/content-planning.md) for new material or a same-style redesign, and the relevant purpose in [narrative.md](references/narrative.md). Establish the audience and intended outcome, then make a short page script before choosing geometry or component codes. Check that neighboring page points form a supported argument. Preserve the user's counts, facts, dates and relationships. These decisions belong to the authoring agent: the renderer does not infer them.
 
 ## Choose the visual treatment
 
-Read [visual-system.md](references/visual-system.md) before designing. Use `assets/tokens.json` as the single source of design values. The warm-white canvas, restrained orange-red emphasis, dark text and translucent layers define the style. Preserve a user-supplied brand asset as an image with its aspect ratio; the public defaults are unbranded.
+Read [visual-system.md](references/visual-system.md) before designing. Use `assets/tokens.json` for the warm-white canvas, local orange-red emphasis, dark text and translucent material. Treat these as visual constants, not a fixed page skeleton.
 
-Read [ui-components.md](references/ui-components.md) for C01–C24 selection and the native UI brief format. `assets/components.json` indexes parameters and capacities. `assets/component-library.pptx` contains editable examples for direct copying. Choose by the relationship: comparison, sequence, containment, role hand-off, time trend or scope mapping. A sparse statement may need only a headline; do not fill every page with the same card grid.
+Use the user's original logo and slogan as an optional brand profile, with their original proportions and clear space. An original image stays an image; adjacent slide text stays editable. A missing brand means an unbranded deck. Keep private institution assets outside the distributable skill. See [composition.md](references/composition.md) for a local image profile.
 
-The approved component canvas is 1672×941. Keep the fixed header and clear upper-right corner. Use fill opacity for glass while leaving text fully opaque. The legacy 11-layout format remains at 1600×900; read [layouts.md](references/layouts.md) only for that format, and do not mix coordinates.
+Design the content area, title position and visual hierarchy for each page. A cover has its own composition; a diagram can use more canvas than a text page. Preserve a user's header and protected upper-right corner when applicable. Standard composition uses the reference canvas, 1672×941; the legacy 11-layout format uses 1600×900. Keep coordinate systems separate.
 
 ## Build the deck
 
-For portable offline generation, read [ui-components.md](references/ui-components.md), copy the applicable six-page brief from `examples/ui/`, and replace its content and parameters. Run commands from this skill's folder:
+For content-led offline authoring, read [composition.md](references/composition.md) and write a `warm-glass-compose/v1` brief. It supports freely positioned native text, shapes, lines and attached connectors, original image assets, and optional C01–C24 components. Each page records why its composition fits its information relationship. Run from the skill folder:
 
 ```bash
 npm ci
-node scripts/build-ui.mjs examples/ui/report.json --out output/report
+node scripts/build-ui.mjs my-composition.json --out output/my-deck
 ```
 
-The four purpose examples are `report.json`, `talk.json`, `training.json` and `product.json`. `components.json` demonstrates all 24 families. Corresponding PPTX examples are included for direct editing. The generator lays out supplied copy; it does not research, rewrite a narrative or infer real business results.
+The generic [composition example](examples/compose/content-led.json) demonstrates a cover, relationship diagram and parallel schedule. Separate `report.json`, `talk.json`, `training.json` and `product.json` in the same folder demonstrate different fictional material. Write the actual page plan from the user's content. Examples demonstrate techniques; they do not determine slide count, outline or geometry.
+
+For consequential claims and relationships, use the optional source register and page `claims`, `relations` and `reviewQuestions`. A non-observed claim needs a visible status anchor; an observed claim needs a non-example source. Declared arrows, containment bounds and common-axis alignment are checked against the referenced native elements. Source references do not automatically establish truth: compare them with the user's material during content review.
+
+Read [ui-components.md](references/ui-components.md) when a local component actually fits the relationship or when reproducing the older UI brief. `assets/components.json` lists capacities. The six-page files in `examples/ui/` and editable PPTX assets remain compatibility examples, not the default structure for every new assignment. More complex charts or unsupported relationships can use the host's native authoring API with the same visual tokens.
 
 `--out` is a directory. Output includes `deck.pptx`, a self-contained vector `preview.html`, `scene.json` and `validation.json`. The builder refuses existing deliverables unless `--force` is supplied. It rejects unsupported fields, estimated text overflow and off-canvas elements. Resolve the wording or layout and rerun. Native shape/text groups are named by component instance. Charts, tables and attached connectors remain independent editable objects; recheck connector routing after manual node changes.
 
-For an existing v1 brief, use `scripts/build.mjs` and read [input-format.md](references/input-format.md). Both formats remain supported.
+For an existing v1 brief, use `scripts/build.mjs` and read [input-format.md](references/input-format.md). The v2 component format remains supported too; new generation has no sample brand by default and cover/transition components own their titles.
 
 In a host with a required presentation-authoring workflow, use that workflow and carry over this skill's tokens, narrative and layout decisions. The included generator is an independent portable implementation; it does not require a host's private libraries.
 
@@ -55,6 +65,8 @@ If the source contains one full-slide bitmap per page, extraction yields that bi
 
 ## Finish
 
-Read [quality.md](references/quality.md). Open the HTML preview and inspect every page, then render the actual PPTX through an available presentation renderer. HTML is a design preview, not proof of PowerPoint rendering. Recheck changed pages after corrections. Report which text, shapes, charts and images remain editable, and any missing rendering check or font substitution that affects use.
+Read [quality.md](references/quality.md). Check content and meaning against the material, whole-deck rhythm, and every actual rendered PPTX page separately from file integrity. Confirm an intentional title hierarchy and the intended brand. Recurring layouts are appropriate when the relationship benefits from them; repetition warnings call for judgment, not arbitrary variety.
+
+For a finished deck, read [review.md](references/review.md). The portable renderer can open the actual PPTX through installed LibreOffice and Poppler. Initialize a review receipt, inspect the resulting pages, record content/design/page judgments, and verify its freshness. The record starts pending; a build, image, render or recipe change invalidates prior approval. If the environment cannot render PPTX, deliver only with that gap explicitly disclosed, not as a reviewed final. An explicitly requested draft can remain an identified draft. Target-application interaction is a separate check; do not imply WPS or PowerPoint was tested by a headless render.
 
 Deliver the deck and its preview; keep brief, scene and validation data available for later edits. Uploading or publishing source materials requires the user's authorization and the intended repository or destination.

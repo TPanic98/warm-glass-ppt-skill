@@ -1,0 +1,31 @@
+{
+ "schema":"warm-glass-compose/v1","title":"巡检协作产品介绍示例","mode":"product",
+ "context":{"audience":"现场巡检负责人","goal":"判断该虚构产品是否适合一次巡检闭环，并了解试用边界"},
+ "sources":[{"id":"S1","title":"虚构产品说明：支持登记问题、分派责任人和复核；暂不支持离线；自动识别照片仅为后续设想；试用需准备脱敏样本和责任清单","kind":"example"}],
+ "slides":[
+  {"title":"让一次巡检有明确的处理闭环","role":"cover","plan":{"job":"介绍用户任务与价值主张","mainPoint":"登记、分派和复核在同一任务中衔接","relationship":"用户问题与产品主张","composition":"以单句主张为中心，辅以用户困扰和用途说明","evidence":"S1"},"elements":[
+   {"id":"kicker","type":"text","x":90,"y":220,"w":1300,"h":60,"size":32,"color":"@accentText","text":"面向现场巡检负责人的协作方案"},
+   {"id":"title","type":"text","role":"title","x":90,"y":350,"w":1480,"h":200,"size":72,"bold":true,"text":"让一次巡检\n有明确的处理闭环"},
+   {"id":"pain","type":"text","x":95,"y":650,"w":1420,"h":100,"size":32,"color":"@muted","text":"发现问题之后，还需要知道谁处理、如何核对。"},
+   {"id":"status","type":"text","x":95,"y":855,"w":1450,"h":35,"size":21,"color":"@muted","text":"虚构产品示例，不代表实际在售产品或客户成果。"}
+  ]},
+  {"title":"从发现到复核，责任不断点","role":"body","plan":{"job":"说明一次代表性使用流程","mainPoint":"每次交接有明确责任角色","relationship":"任务交接顺序","composition":"横向流程分别标出现场人员、责任人与复核人","evidence":"S1","relations":[{"type":"directed","from":"record","to":"assign","via":"a"},{"type":"directed","from":"assign","to":"review","via":"b"}]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":110,"w":1500,"h":100,"size":58,"bold":true,"text":"从发现到复核，责任不断点"},
+   {"id":"record","type":"shape","x":90,"y":380,"w":390,"h":230,"geometry":"roundRect","fill":"@glass"},
+   {"id":"record-text","type":"text","x":130,"y":435,"w":310,"h":130,"size":32,"text":"现场人员\n登记问题与记录"},
+   {"id":"assign","type":"shape","x":650,"y":380,"w":390,"h":230,"geometry":"roundRect","fill":"@focus"},
+   {"id":"assign-text","type":"text","x":690,"y":435,"w":310,"h":130,"size":32,"bold":true,"text":"责任人\n接收并处理问题"},
+   {"id":"review","type":"shape","x":1210,"y":380,"w":370,"h":230,"geometry":"roundRect","fill":"@glass"},
+   {"id":"review-text","type":"text","x":1250,"y":435,"w":290,"h":130,"size":32,"text":"复核人\n核对处理结果"},
+   {"id":"a","type":"connector","from":"record","to":"assign"},{"id":"b","type":"connector","from":"assign","to":"review"},
+   {"id":"status","type":"text","x":90,"y":850,"w":1450,"h":40,"size":22,"color":"@muted","text":"示例流程；不能据此宣称自动消除漏办或提高某一比例的效率。"}
+  ]},
+  {"title":"先验证适用边界，再决定试用","role":"closing","plan":{"job":"让用户判断适用条件与下一步","mainPoint":"试用需要脱敏样本、责任清单及在线环境","relationship":"现有能力、限制与后续计划的区分","composition":"左右区分试用边界与未来设想，底部给准备动作","evidence":"S1","claims":[{"id":"future","text":"自动识别照片仅为后续设想","status":"planned","sourceRefs":["S1"],"elements":["roadmap"],"statusElement":"roadmap"}],"reviewQuestions":["未来设想是否被误读成当前可用功能？"]},"elements":[
+   {"id":"title","type":"text","role":"title","x":70,"y":110,"w":1500,"h":100,"size":58,"bold":true,"text":"先验证适用边界，再决定试用"},
+   {"id":"available","type":"text","x":100,"y":340,"w":660,"h":220,"size":34,"text":"示例能力与限制\n登记、分派、复核\n暂不支持离线使用"},
+   {"id":"roadmap","type":"text","x":940,"y":340,"w":620,"h":220,"size":34,"color":"@accentText","text":"后续设想，非当前能力\n自动识别照片\n实施时间尚未承诺"},
+   {"id":"next","type":"text","x":100,"y":690,"w":1460,"h":110,"size":34,"bold":true,"text":"试用准备：脱敏样本 + 责任清单 + 在线环境"},
+   {"id":"status","type":"text","x":100,"y":855,"w":1450,"h":35,"size":21,"color":"@muted","text":"虚构产品示例；未提供价格、客户案例或性能数据。"}
+  ]}
+ ]
+}

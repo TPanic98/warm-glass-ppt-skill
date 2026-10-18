@@ -69,11 +69,12 @@ export class Painter{
  }
 }
 
-export function header(a){
- a.text('brand','WARM GLASS',48,38,240,43,28,{bold:true,color:C.header,wrapText:false});
+export function header(a,brand){
+ if(!brand)return;
+ a.text('brand',brand.name,48,38,240,43,28,{bold:true,color:C.header,wrapText:false});
  a.line('header-divider',305,42,305,87,'#FF3D12/68',1);
- a.text('slogan-en','Clarity by design',333,39,430,29,20,{color:C.header,wrapText:false});
- a.text('slogan-cn','让结构帮助理解',333,69,430,25,17,{color:C.header,wrapText:false});
+ if(brand.sloganEn)a.text('slogan-en',brand.sloganEn,333,39,430,29,20,{color:C.header,wrapText:false});
+ if(brand.sloganCn)a.text('slogan-cn',brand.sloganCn,333,69,430,25,17,{color:C.header,wrapText:false});
 }
 function headline(a,part,title,accent,x,y,w,h,size){
  if(accent&&title.includes(accent)&&!title.includes('\n')){
